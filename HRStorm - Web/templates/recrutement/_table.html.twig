@@ -1,0 +1,35 @@
+{% if recrutements|length == 0 %}
+<p>No results found.</p>
+{% else %}
+{% if searchTerm is empty %}
+<p>Showing all Recrutements:</p>
+{% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>NbrPoste</th>
+            <th>Salaire</th>
+            <th>Type</th>
+            <th>Candidats</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for recrutement in recrutements %}
+            <tr>
+                <td>{{ recrutement.titre }}</td>
+                <td>{{ recrutement.description }}</td>
+                <td>{{ recrutement.nbrposte }}</td>
+                <td>{{ recrutement.salaire }}</td>
+                <td>{{ recrutement.type }}</td>
+                <td>{{ recrutement.candidats|join(', ') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
+
+
+

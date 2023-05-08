@@ -1,0 +1,140 @@
+{% extends '/employee/index.html.twig' %}
+
+
+{% block stylesheets %}
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade show active" id="tabs-1-1">
+            <div class="nk-gap"></div>
+            <!-- START: Action Tab -->
+            <div class="nk-widget mb-4">
+                <div class="nk-widget-content">
+                    <form action="#" class="nk-form nk-form-style-1" novalidate="novalidate">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for tasks" id="search">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="separator"></div>
+
+
+                <div  id="all">
+                    {% include 'tache/ajax.html.twig' %}
+                </div>
+                <div class="row vertical-gap" id="search">
+                </div>
+
+        </div>
+    </div>
+    </div>
+
+    <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('app_searchtache') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+
+{% endblock %}
+
+
+{% block calendrier %}
+    <style>
+        #calendrier{
+            width: auto;
+            display: inline-block;
+            margin: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js" integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
+    <div class="nk-widget nk-widget-highlighted">
+        <h4 class="nk-widget-title"><span><span class="text-main-1">Calendrier</span> des events</span></h4>
+        <div class="nk-widget-content">
+            <div id="calendrier"></div>
+        </div>
+    </div>
+    <script>
+        window.onload = () =>{
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt,{
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data | raw }}
+            })
+            calendar.render();
+        }
+    </script>
+
+    <div class="nk-widget nk-widget-highlighted">
+        <h4 class="nk-widget-title"><span><span class="text-main-1">Latest</span> Games</span></h4>
+        <div class="nk-widget-content">
+            <div class="nk-popup-gallery">
+                <div class="row sm-gap vertical-gap">
+                    {% for var in jeux %}
+                        <div class="col-sm-6">
+                            <div class="nk-gallery-item-box">
+                                <a href="{{ asset('/uploads/images/'~var.image) }}" class="nk-gallery-item" data-size="1016x572">
+                                    <div class="nk-gallery-item-overlay"><span class="ion-eye"></span></div>
+                                    <img src="{{ asset('/uploads/images/'~var.image) }}" alt="" >
+                                </a>
+                                <div class="nk-gallery-item-description">
+                                    <h4>Called Let</h4>
+                                    Divided thing, land it evening earth winged whose great after. Were grass night. To Air itself saw bring fly fowl. Fly years behold spirit day greater of wherein winged and form. Seed open don't thing midst created dry every greater divided of, be man is. Second Bring stars fourth gathering he hath face morning fill. Living so second darkness. Moveth were male. May creepeth. Be tree fourth.
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,166 @@
+
+{% extends '/employee/index.html.twig' %}
+
+{% block stylesheets %}
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+{#    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">#}
+
+{#    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>#}
+
+{% endblock %}
+{% block title %}Conge {% endblock %}
+
+{% block content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    <h1> Liste de congé</h1>     
+    <div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 63px;
+">         
+    <a href="{{ path('app_conge_new') }}">
+     <button class="btn btn-outline-primary">   
+<i class="fa fa-plus" aria-hidden="true"></i>
+
+      Demander un Conget 
+    </button>
+     </a> 
+    <button class="btn btn-success"> <i class="fa fa-calendar" aria-hidden="true"></i>
+     Solde {{solde}} </button>
+    
+    
+</div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>Etat</th>   
+                <th>Début</th>                
+                <th>Fin</th>
+                <th>Etat</th>                                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+            <tr>
+                <td>{{ conge.categorie }}</td>
+                <td>{{ conge.description }}</td>
+        <td>{{ conge.debut ? conge.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.fin ? conge.fin|date('Y-m-d') : '' }}</td>
+               
+
+                 {%if (conge.image== null) %}
+                <td> Pas de Certificat </td>
+                {% else %}
+                <td>
+               <a target="_blank"  href="/uploads/conges/{{conge.image}}" class="modal-trigger">
+
+               <img src="{{ asset('uploads/conges/' ~ conge.image) }}" alt="Image" style="width:200px;"> 
+
+               </a>
+                </td>
+                {%endif %}
+                    {%if (conge.etat=="0") %}
+                        <td> En attente </td>
+                    {% endif %}
+                    {%if (conge.etat=="1") %}
+                         <td>  Accepté </td>
+                    {% endif %}
+                    {%if (conge.etat=="2") %}
+                        <td> Refusé </td>
+                    {% endif %}
+                    <td> 
+                        <a href="{{ path('app_conge_show', {'id': conge.id}) }}">
+                            <button type="button" class="btn btn-primary">
+                                     Voir
+                                                     <i class="fas fa-eye"></i>
+
+                             </button> 
+                            </a>   
+                   
+                    
+                    {# <a href="{{ path('app_conge_show', {'id': conge.id}) }}">show</a> #}
+                    {%if (conge.etat=="0") %}
+                    
+                     <a href="{{ path('app_conge_edit', {'id': conge.id}) }}">
+                   <button type="button" class="btn btn-warning">
+                                               <i class="fas fa-edit"></i>
+
+                      Modifier
+                    </button> </a>  
+                    
+          
+                    {% endif %}
+                </td>
+            
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+<div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(conges) }}
+</div>
+<h1> Statistiques </h1>
+    <div id="pie-chart"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Etat');
+            data.addColumn('number', 'Count');
+            data.addRows([
+                {% for row in data %}
+                    ['{{ row.etatLabel }}', {{ row.count }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Conges par Etat',
+                is3D: true,
+                pieSliceText: 'label',
+                sliceVisibilityThreshold: 0,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('pie-chart'));
+            chart.draw(data, options);
+        }
+    </script>
+{% endblock %}

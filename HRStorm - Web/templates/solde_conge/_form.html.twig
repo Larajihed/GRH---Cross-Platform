@@ -1,0 +1,31 @@
+    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}, 'class': 'form-horizontal'}) }}
+
+
+
+     <div class="form-group">
+        {{ form_label(form.solde, 'solde', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.solde, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.solde) }}
+             {% if not form.vars.submitted %}
+        <div class="form-group">
+            {{ form_label(form.id_user, 'id_user', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.id_user, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.id_user) }}
+        </div>
+    {% else %}
+        <div class="form-group">
+            {{ form_label(form.id_user, 'id_user', {'label_attr': {'class': 'control-label'}}) }}
+            {{ form_widget(form.id_user, {'attr': {'class': 'form-control'}, 'disabled': true}) }}
+            {{ form_errors(form.id_user) }}
+        </div>
+    {% endif %}
+
+
+    </div>
+
+<div class="form-group row">
+    <button type="submit" class="btn btn-primary" style="
+    margin-left: 19px;
+    width: 196px;
+    ">Enregistrer</button>
+</div>{{ form_end(form) }}

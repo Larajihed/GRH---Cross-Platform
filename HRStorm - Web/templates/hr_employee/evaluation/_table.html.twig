@@ -1,0 +1,34 @@
+{% if evaluations|length == 0 %}
+    <p>No results found.</p>
+{% else %}
+    {% if searchTerm is empty %}
+  
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Commentaire</th>
+                <th>Employee</th>
+                <th>Experience</th>
+                <th>Level</th>
+                <th>Competences</th>
+                <th>Poste</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evaluation in evaluations %}
+                <tr>
+                    <td>{{ evaluation.Date|date('Y-m-d') }}</td>
+                    <td>{{ evaluation.Commentaire }}</td>
+                    <td>{{ evaluation.Employee.username }}</td>
+                    <td>{{ evaluation.Experience }}</td>
+                    <td>{{ evaluation.Level }}</td>
+                    <td>{{ evaluation.Competences|join(', ') }}</td>
+                    <td>{{ evaluation.Poste.Nom }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

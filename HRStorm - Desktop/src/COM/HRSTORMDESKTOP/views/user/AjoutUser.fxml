@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.user.AjoutUserController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1013.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="810.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0">
+               <fill>
+                  <LinearGradient endX="1.0">
+                     <stops>
+                        <Stop color="#3166f7" />
+                        <Stop color="#3285fa9b" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="826.0" layoutX="200.0" layoutY="-16.0" stroke="TRANSPARENT" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeMiterLimit="20.0" strokeType="INSIDE" width="817.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#edededae" />
+                        <Stop color="#eeeeee" offset="0.8954248366013071" />
+                        <Stop color="#1e92ff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fitHeight="209.0" fitWidth="200.0" focusTraversable="true" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../feuilletemps/logowhite.png" />
+               </image>
+              
+            </ImageView>
+            <Label fx:id="homeLabel" layoutX="41.0" layoutY="151.0" onMouseClicked="#redirectHome" prefHeight="49.0" prefWidth="87.0" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="19.0" />
+               </font>
+            </Label>
+            
+            <Label layoutX="378.0" layoutY="77.0" text="Ajouter un utilisateur" textFill="#3185fc">
+               <font>
+                  <Font name="Microsoft Sans Serif" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="330.0" layoutY="253.0" prefHeight="21.0" prefWidth="12.0" text=":" />
+            <TextField fx:id="Nom" layoutX="256.0" layoutY="209.0" prefHeight="25.0" prefWidth="193.0" promptText="Nom" />
+            <TextArea fx:id="Prenom" layoutX="256.0" layoutY="253.0" prefHeight="25.0" prefWidth="193.0" promptText="Prenom" />
+            <TextField fx:id="Nomsociete" layoutX="257.0" layoutY="320.0" prefHeight="25.0" prefWidth="193.0" promptText="Societe" />
+            <DatePicker fx:id="dateNaiss" layoutX="256.0" layoutY="371.0" prefHeight="25.0" prefWidth="193.0" promptText="Date de naissance" />
+            <TextField fx:id="Email" layoutX="257.0" layoutY="421.0" prefHeight="25.0" prefWidth="193.0" promptText="Email" />
+            <TextField fx:id="password" layoutX="257.0" layoutY="472.0" prefHeight="25.0" prefWidth="193.0" promptText="Mot de passe" />
+            <Button fx:id="DocumentLegit" layoutX="629.0" layoutY="283.0" mnemonicParsing="false" onAction="#DocumentImportation" prefHeight="25.0" prefWidth="250.0" text="Importer document légitime" />
+            <Button fx:id="ImprtCsv" layoutX="629.0" layoutY="353.0" mnemonicParsing="false" onAction="#ImportCSV" prefHeight="25.0" prefWidth="250.0" text="Importer une liste à partir d'un fichier .csv" />
+            <Separator layoutX="629.0" layoutY="576.0" prefHeight="25.0" prefWidth="250.0" />
+            <Button fx:id="Ajouter" layoutX="711.0" layoutY="627.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="87.0" style="-fx-background-color: #3166f7;" text="Ajouter" textFill="WHITE" />
+            <Label layoutX="256.0" layoutY="185.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="256.0" layoutY="234.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="257.0" layoutY="298.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="257.0" layoutY="345.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="257.0" layoutY="396.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="257.0" layoutY="446.0" text="**" textFill="RED">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="homeLabel1" layoutX="41.0" layoutY="191.0" onMouseClicked="#redirectToDisplayUser" prefHeight="69.0" prefWidth="121.0" text="Affichage users" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="SansSerif Bold" size="19.0" />
+               </font>
+            </Label>
+            <ToggleButton fx:id="RespFeuille" layoutX="629.0" layoutY="415.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="250.0" text="Employé(e)" textFill="#3166f7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></ToggleButton>
+            <ToggleButton fx:id="RespConge" layoutX="629.0" layoutY="463.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="250.0" text="Employé RH" textFill="#3166f7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></ToggleButton>
+            <ToggleButton fx:id="RespRH" layoutX="628.0" layoutY="513.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="250.0" text="Responsable RH" textFill="#3166f7">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></ToggleButton>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

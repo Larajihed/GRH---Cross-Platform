@@ -1,0 +1,79 @@
+
+{% extends "/employee/index.html.twig" %}
+
+
+
+{% block content %}
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+    <div style="text-align: right;">
+        <a class="btn btn-dark text-light float-right" href="{{ path('search_candidat_page') }}"><i class="bi bi-search"></i> Recherche </a>
+    </div>
+    <h1>Les Candidats</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Datenaissance</th>
+                <th>Tel</th>
+                <th>Email</th>
+                <th>etat </th>
+                <th>cv </th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.nom }}</td>
+                <td>{{ candidat.prenom }}</td>
+                <td>{{ candidat.datenaissance ? candidat.datenaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ candidat.tel }}</td>
+                <td>{{ candidat.email }}</td>
+                <td>
+                    <a target="_blank"  href="/uploads/candidat/{{candidat.cv}}" class="modal-trigger">Consulter CV</a>
+                </td>
+                {%if (candidat.etat=="0") %}
+                        <td> En attente </td>
+                    {% endif %}
+                    {%if (candidat.etat=="1") %}
+                         <td>  Accepté </td>
+                    {% endif %}
+                    {%if (candidat.etat=="2") %}
+                        <td> Refusé </td>
+                    {% endif %}
+
+                <td>
+
+                    <a class="btn btn-primary" href="{{ path('app_candidat_show', {'id': candidat.id}) }}">show</a>
+                     {%if (candidat.etat =="0") %}
+
+                    
+                 <a class="btn btn-success" href="{{ path('app_candidat_accepter', {'id': candidat.id}) }}">Accepter</a>
+                    <a class="btn btn-danger" href="{{ path('app_candidat_refuser', {'id': candidat.id}) }}">Refuser</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        
+        </tbody>
+    </table>
+    <div class="pagination">
+        {{ knp_pagination_render(candidats) }}
+    </div>
+
+
+    {# <a href="{{ path('app_candidat_accepté') }}">Candidat Accepté</a> #}
+{% endblock %}

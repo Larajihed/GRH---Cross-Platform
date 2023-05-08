@@ -1,0 +1,26 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Ajout Solde{% endblock %}
+
+{% block content %}
+    <h1>Ajout Solde</h1>
+    <div style="
+       width: 64px;
+    margin-bottom: 15px;
+    float: right;
+    margin-top: -24px;
+    margin-right: 35px;">    
+        <a href="{{ path('app_solde_conge_index') }}">
+    <button class="btn btn-outline-primary"> 
+    <i class="fa fa-undo"></i>
+
+    Retour
+    </button>
+    </a>
+    </div>
+
+    {{ include('solde_conge/_form.html.twig') }}
+   
+
+
+{% endblock %}

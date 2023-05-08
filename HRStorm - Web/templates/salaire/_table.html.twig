@@ -1,0 +1,31 @@
+{% if salaires|length == 0 %}
+    <p>Aucun Resultat !</p>
+{% else %}
+    {% if searchTerm is empty %}
+        <p>Afficher toutes les salaires:</p>
+
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Id_user</th>
+            <th>Montant</th>
+            <th>Date</th>
+            <th>Taux_augmentation</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for salaire in salaires %}
+            <tr>
+                <!-- <td>{{ salaire.id }}</td>-->
+                <td>{{ salaire.idUser }}</td>
+                <td>{{ salaire.montant }}</td>
+                <td>{{ salaire.date ? salaire.date|date('Y-m-d') : '' }}</td>
+                <td>{{ salaire.tauxAugmentation }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

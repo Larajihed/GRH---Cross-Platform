@@ -1,0 +1,31 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Titre</th>
+        <th>Description</th>
+        <th>Nbrposte</th>
+        <th>Salaire</th>
+        <th>Type</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for recrutement in recrutements %}
+        <tr>
+            <td>{{ recrutement.titre }}</td>
+            <td>{{ recrutement.description }}</td>
+            <td>{{ recrutement.nbrposte }}</td>
+            <td>{{ recrutement.salaire }}</td>
+            <td>{{ recrutement.type }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ path('app_recrutement_show', {'id': recrutement.id}) }}">show</a>
+                <a class="btn btn-secondary" href="{{ path('app_recrutement_edit', {'id': recrutement.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="7">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

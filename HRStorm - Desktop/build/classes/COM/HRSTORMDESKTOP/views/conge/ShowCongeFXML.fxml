@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="689.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.conge.ShowCongeController">
+ 
+   <Button layoutX="412.0" layoutY="83.0" onAction="#showAddConge" prefHeight="42.0" prefWidth="229.0" style="-fx-background-color: #3166f7;" text="Nouveau Conge" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Label layoutX="64.0" layoutY="87.0" style="-fx-font-weight: bold;" text="Liste de conge ">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <ListView fx:id="CongesList" layoutX="64.0" layoutY="140.0" prefHeight="278.0" prefWidth="577.0" />
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

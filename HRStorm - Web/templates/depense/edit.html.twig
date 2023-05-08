@@ -1,0 +1,13 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Modifier Dépense{% endblock %}
+
+{% block content %}
+    <h1>Modifier Dépense</h1>
+
+    {{ include('depense/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="btn btn-black" href="{{ path('app_depense_index') }}"><span class="fa fa-chevron-left"></span>retour au liste</a>
+
+    {{ include('depense/_delete_form.html.twig') }}
+{% endblock %}

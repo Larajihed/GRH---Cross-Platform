@@ -1,0 +1,48 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}, 'class': 'form-horizontal'}) }}
+
+    {{ form_errors(form) }}
+
+<div class="form-group">
+    {{ form_label(form.nom, 'nom', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nom) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.prenom, 'prenom', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prenom) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.datenaissance, 'datenaissance', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.datenaissance, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.datenaissance) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.tel, 'tel', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.tel, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.tel) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.email, 'email', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.email) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.lettremotivation, 'lettremotivation', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.lettremotivation, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.lettremotivation) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.cv, 'cv', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.cv, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.cv) }}
+</div>
+
+<button type="submit" class="btn btn-primary">Sauvgarder</button>
+{{ form_end(form) }}

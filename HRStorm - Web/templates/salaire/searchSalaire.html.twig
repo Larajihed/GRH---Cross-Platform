@@ -1,0 +1,84 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Salaire index{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="">Gestion des salaires</h1>
+            <div class="text-right">
+                <a href="{{ path('app_salaire_new') }}" class="btn btn-primary">Ajouter salaire</a>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_budget_index') }}">Table du budget</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_depense_index') }}">Table des dépenses</a>
+                </li>
+            </ul>
+            <div id="wrap">
+                <ul class="navbar">
+                    <li>
+                        <a href="{{ path('app_salaire_index')}}">Actualiser</a>
+                    </li>
+                    <li>
+                        <a href="#">Trie</a>
+                        <ul>
+                            <li><a href="{{ path('order_By_date')}}">Trie par date</a></li>
+                            <li><a href="{{ path('order_By_montant')}}">Trie par montant</a></li></ul>
+
+                        <a href="#">Recherche</a>
+                        <ul>
+                            <li><a href="{{ path('listSalaireWithSearchid')}}">Recherche Par id_user</a></li>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <a class="btn btn-success" href="{{path('PDF') }}">  PDF </a>
+            <script type="text/javascript">
+                function imprimer_page(){
+                    window.print();
+                }
+            </script>
+            <form>
+                <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+            </form>
+        </tr>
+        <tr>
+            <!--<th>Id</th>-->
+            <th>Id_user</th>
+            <th>Montant</th>
+            <th>Date</th>
+            <th>Taux_augmentation</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for salaire in salaires %}
+            <tr>
+                <!-- <td>{{ salaire.id }}</td>-->
+                <td>{{ salaire.idUser }}</td>
+                <td>{{ salaire.montant }}</td>
+                <td>{{ salaire.date ? salaire.date|date('Y-m-d') : '' }}</td>
+                <td>{{ salaire.tauxAugmentation }}</td>
+                <td>
+                    <a href="{{ path('app_salaire_edit', {'id': salaire.id}) }}">Modifier</a>
+                    <a href="{{ path('app_salaire_delete', {'id': salaire.id}) }}">Supprimer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

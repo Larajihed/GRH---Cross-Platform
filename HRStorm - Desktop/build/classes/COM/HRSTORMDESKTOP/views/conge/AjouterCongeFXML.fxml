@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="521.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.conge.AjouterCongeController">
+   <children>
+      <Label id="tf_cate" layoutX="67.0" layoutY="78.0" text="Categorie">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tf_categorie" layoutX="163.0" layoutY="78.0" prefHeight="25.0" prefWidth="261.0" promptText="categorie" />
+      <Button id="bt_reset" layoutX="97.0" layoutY="295.0" mnemonicParsing="false" onAction="#restFields" prefHeight="40.0" prefWidth="113.0" style="-fx-background-color: #3166f7;" text="Reset" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button id="bt_save" layoutX="384.0" layoutY="295.0" mnemonicParsing="false" onAction="#ajouterConge" prefHeight="40.0" prefWidth="113.0" style="-fx-background-color: #3166f7;" text="Demander" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <TextField fx:id="tf_desc" layoutX="163.0" layoutY="116.0" prefHeight="25.0" prefWidth="261.0" />
+      <Label layoutX="67.0" layoutY="118.0" text="Description">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <DatePicker fx:id="dp_fin" layoutX="163.0" layoutY="193.0" prefHeight="25.0" prefWidth="261.0" />
+      <DatePicker fx:id="dp_debut" layoutX="163.0" layoutY="153.0" prefHeight="25.0" prefWidth="261.0" />
+      <Label layoutX="70.0" layoutY="155.0" text="Debut">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="74.0" layoutY="195.0" text="Fin">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+<Button fx:id="gen" layoutX="397.0" layoutY="22.0" mnemonicParsing="false" onAction="#gen" prefHeight="40.0" prefWidth="100.0" style="-fx-background-color: #4CD5E5;" text="Generer" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button layoutX="437.0" layoutY="235.0" mnemonicParsing="false" onAction="#read" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #4CD5E5;" text="Lire" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <TextField fx:id="QR_path" layoutX="163.0" layoutY="237.0" prefHeight="25.0" prefWidth="261.0" />
+      <Label layoutX="66.0" layoutY="237.0" text="QR path">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -1,0 +1,269 @@
+{% extends "/employee/index.html.twig" %}
+
+{% block title %}Evaluation {% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+   <div >
+        <div class="d-flex ">
+            <h1>Evaluations</h1>
+        </div>
+
+        
+        <div class="d-flex">
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Evaluations </div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ evaluations|length }}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                           Competences</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ competences|length }}</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Earnings (Monthly) Card Example -->
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Postes
+                                        </div>
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col-auto">
+                                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ postes|length }}</div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                   
+        </div>
+
+
+
+        <div class="d-flex" > 
+            <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div
+                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Nombre d'évaluations / Mois</h6>
+                                  
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div id="chart_div_2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                <div class="col-xl-4 col-lg-5">
+                        <!-- Card Header - Dropdown -->
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary">Number of Evaluations by Level
+                            </h6>
+                                <div class="dropdown no-arrow">
+                                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i> </a>
+                                </div>
+                        </div>
+                                
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <div id="myChart"></div>
+                                    </div>
+                    
+                                </div>
+                            </div>
+                    
+        </div>
+
+                    
+           
+
+           <div class="row justify-content-between p-3" >
+                    <a href="{{ path('app_evaluation_new') }}" class="btn btn-success"> <i class="bi bi-plus-circle"></i>Nouvelle Evaluation</a>
+           </div>
+
+    </div>
+    
+      
+    <div class="d-flex justify-content-between">
+    <h3> Tous les évaluations </h3>
+    <a class="btn btn-dark text-light " href={{path('search_evaluations_page')}} ><i class="bi bi-search"></i> Recherche Avancée </a>
+    </div>
+
+    <table class="table">
+    
+    
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Level</th>
+                <th>Commentaire</th>
+                <th>Experience</th>
+                <th>Date</th>
+                <th>Recommendation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evaluation in evaluations %}
+            <tr>
+                <td>{{ evaluation.Employee }}</td>
+                <td>{{ evaluation.Level }}</td>
+                <td>{{ evaluation.Commentaire }}</td>
+                <td>{{ evaluation.Experience }}</td>
+                <td>{{ evaluation.Date ? evaluation.Date|date('Y-m-d') : '' }}</td>
+                <td> {% for c in missingCompetences %}
+                <p class="badge bg-danger text-light ">{{ c }} </p>
+                {% endfor %}
+                </td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_evaluation_show', {'id': evaluation.id}) }}">
+                    <i class="bi bi-eye"></i>
+                    show</a>
+                    <a class="btn btn-secondary" href="{{ path('app_evaluation_edit', {'id': evaluation.id}) }}"><i class="bi bi-pen"></i>edit</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(evaluations) }}
+</div>
+   
+
+
+
+{% endblock %}
+{% block javascripts %}
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart1);
+        google.charts.setOnLoadCallback(drawChart2);
+
+        function drawChart1() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Level');
+            data.addColumn('number', 'Number of Evaluations');
+            data.addRows([
+                {% for row in piechartData %}
+                    ['{{ row.level }}', {{ row.count }}],
+                {% endfor %}
+            ]);
+
+            var options = {
+                title: 'Number of Evaluations by Level',
+                is3D: true,
+                     colors: ['#3366CC', '#DC3912', '#FF9900', '#109618', '#990099', '#0099C6'],
+    backgroundColor: { fill:'transparent' },
+    titleTextStyle: { color: '#444', fontSize: 14 },
+    legendTextStyle: { color: '#444', fontSize: 10 },
+    pieSliceBorderColor: '#fff',
+    pieSliceText: 'value',
+    pieSliceTextStyle: { color: '#fff', fontSize: 12 },
+
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+            chart.draw(data, options);
+        }
+
+        function drawChart2() {
+             var data = google.visualization.arrayToDataTable([      ['Month', 'Count'],
+      ['January',  5],
+      ['February', 3],
+      ['March',    2],
+      ['April',    8],
+      ['May',      6]
+    ]);
+
+    var options = {
+      title: 'Evaluation Count by Month',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+            var chart = new google.visualization.LineChart(document.getElementById('chart_div_2'));
+            chart.draw(data, options);
+        }
+    </script>
+     <script src="{{ asset('assets/js/jquery.js') }}"></script>
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            var currentRequest = null;
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte
+                afin d’effectuer la recherche */
+                var value = $(this).val();
+                if(currentRequest != null) {
+                    currentRequest.abort();
+                }
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est
+                « search » pour faire la recherche */
+                currentRequest = $.ajax({
+                    url : "{{ path('app_evaluation_index') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour)
+                    {
+                        $('#all').html(retour);
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+
+{% endblock %}

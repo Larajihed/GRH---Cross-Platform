@@ -1,0 +1,104 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Salaire index{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="">Gestion des salaires</h1>
+                <div style="text-align: right;">
+                    <a class="btn btn-dark text-light float-right" href="{{ path('search_salaire_page') }}"><i class="bi bi-search"></i> Recherche  </a>
+                </div>
+                <div class="text-right">
+                    <a href="{{ path('app_salaire_new') }}" class="btn btn-success"><i class="fas fa-plus"></i>Ajouter salaire</a>
+                    <a href="#" style="margin-right: 10px;"></a>
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_budget_index') }}">
+                            <i class="fas fa-calculator"></i> Table du budget
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_depense_index') }}">
+                            <i class="fas fa-receipt"></i> Table des dépenses
+                        </a>
+                    </li>
+                </ul>
+                <div id="wrap">
+                    <ul class="navbar">
+
+                            <a class="btn btn-warning" href="{{ path('app_salaire_index')}}">Actualiser</a>
+
+                            <!--<a href="#">Trie :</a>
+                            <ul>-->
+                                <a href="{{ path('order_By_date')}}" class="btn btn-default">Trie par date</a>
+                                <a href="{{ path('order_By_montant')}}" class="btn btn-default">Trie par montant</a>
+
+                            <!--<a href="#">Recherche :</a>
+                            <ul>
+                                <li><a href="{{ path('listSalaireWithSearchid')}}">Recherche Par id_user</a></li>
+                            </ul>-->
+
+                    </ul>
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+
+            <!--<a class="btn btn-success" href="{{path('pdf') }}">  PDF </a>-->
+            <script type="text/javascript">
+                function imprimer_page(){
+                    window.print();
+                }
+            </script>
+            <form>
+                <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+            </form>
+        </tr>
+            <tr>
+                <!--<th>Id</th>-->
+                <th>Id_user</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th>Taux_augmentation</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salaire in salaires %}
+            <tr>
+               <!-- <td>{{ salaire.id }}</td>-->
+                <td>{{ salaire.idUser }}</td>
+                <td>{{ salaire.montant }}</td>
+                <td>{{ salaire.date ? salaire.date|date('Y-m-d') : '' }}</td>
+                <td>{{ salaire.tauxAugmentation }}</td>
+                <td>
+                    <a class="btn btn-dark" href="{{ path('app_salaire_edit', {'id': salaire.id}) }}"><i class="fas fa-edit"></i>Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('app_salaire_delete', {'id': salaire.id}) }}"><i class="fas fa-trash"></i>Supprimer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    Salaire </div>
+                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ salaires|length }}</div>
+            </div>
+            <div class="col-auto">
+                <i class="fas fa-calendar fa-2x text-gray-300"></i>
+            </div>
+        </div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Modifier Poste{% endblock %}
+
+{% block content %}
+    <h1>Edit Poste</h1>
+
+    {{ include('hr_employee/poste/_form.html.twig', {'button_label': 'Update'}) }} 
+    <a href="{{ path('app_poste_index') }}">back to list</a>
+
+    {{ include('/hr_employee/poste/_delete_form.html.twig') }}
+{% endblock %}

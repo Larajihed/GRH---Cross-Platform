@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="418.0" prefWidth="1204.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.user.LandingPageController">
+   <children>
+      <Rectangle arcHeight="2000.0" arcWidth="100.0" fill="#3166f7" height="430.0" layoutX="-58.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="658.0" />
+      <ImageView fitHeight="388.0" fitWidth="572.0" layoutX="-20.0" layoutY="-122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="54.0" layoutY="72.0" prefHeight="271.0" prefWidth="329.0" text="Your company's favorite tool." textFill="#ffffffd7" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="219.0" layoutY="404.0" prefHeight="25.0" prefWidth="157.0" text="Code Warriors." textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT Bold" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="signin" layoutX="849.0" layoutY="293.0" mnemonicParsing="false" onAction="#RedirectToLogin" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: #3166f7;" text="Sign in" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Separator layoutX="806.0" layoutY="263.0" prefWidth="200.0" />
+      <Button fx:id="ButtPostuler" layoutX="849.0" layoutY="192.0" mnemonicParsing="false" onAction="#RedirectToPostuler" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: #3166f7;" text="Postuler" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Button fx:id="ChatButton" layoutX="850.0" layoutY="99.0" mnemonicParsing="false" onAction="#RedirectToChat" prefHeight="44.0" prefWidth="113.0" style="-fx-background-color: #3166f7;" text="Chat" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Button>
+      <Separator layoutX="807.0" layoutY="169.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>

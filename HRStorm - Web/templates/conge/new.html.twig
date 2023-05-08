@@ -1,0 +1,39 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Nouveau Conge{% endblock %}
+
+{% block content %}
+ <!-- Flashy depends on jQuery -->
+    <script src="//code.jquery.com/jquery.js"></script>
+    <!-- Load Flashy default JavaScript -->
+    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+    <!-- Include Flashy default partial -->
+    {{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+
+    <h1>Create new Conge</h1>
+    <span style="    margin-top: -7px;
+    margin-bottom: 9px;
+    float: right;"> 
+    <a href="{{ path('app_conge_index') }}">
+    
+    <button class="btn btn-outline-primary"> 
+    <i class="fa fa-undo"></i>
+
+    Retour
+    </button>
+    
+    </a>
+    <button class="btn btn-success"><i class="fa fa-calendar" aria-hidden="true"></i>
+ Solde {{solde}} </button>
+      
+     </span>
+     
+
+    {{ include('conge/_form.html.twig') }}
+                     {%if (response != '') %}
+
+         <h4> {{response}} Votre solde est {{solde}} Vous avez demander {{interval}} </h4>
+        {%endif%}
+
+  
+{% endblock %}

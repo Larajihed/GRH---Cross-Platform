@@ -1,0 +1,36 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Détails {% endblock %}
+
+{% block content %}
+    <a href="{{ path('app_poste_index') }}"><- back to list</a>
+
+    <h1>Détails</h1>
+ <a class"btn btn-primary" href="{{ path('app_poste_edit', {'id': poste.id}) }}">edit</a>
+     {{ include('/hr_employee/poste/_delete_form.html.twig') }}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ poste.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Missions</th>
+                <td>{{ poste.Missions }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ poste.Description }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ poste.SALAIREMAX }} - {{ poste.SALAIREMIN }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+   
+
+{% endblock %}

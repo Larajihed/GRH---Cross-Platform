@@ -1,0 +1,55 @@
+{% extends "/employee/index.html.twig" %}
+{% block title %}Evaluation {% endblock %}
+
+
+
+
+{% block content %}
+
+<h3> Reccomendations </h3>
+
+        
+        {% for m in missingskills %}
+            <p class="badge bg-danger text-light" > {{m}}</p>
+            {% endfor %}
+        
+    </table>
+<h1> Mes Evaluations </h1>
+<table class="table">
+    
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Level</th>
+                <th>Commentaire</th>
+                <th>Experience</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evaluation in evaluations %}
+            <tr>
+                <td>{{ evaluation.Employee }}</td>
+                <td>{{ evaluation.Level }}</td>
+                <td>{{ evaluation.Commentaire }}</td>
+                <td>{{ evaluation.Experience }}</td>
+                <td>{{ evaluation.Date ? evaluation.Date|date('Y-m-d') : '' }}</td>
+               
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_evaluation_show', {'id': evaluation.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('app_evaluation_edit', {'id': evaluation.id}) }}">edit</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block content %}
+
+    <h1>Quizs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Questions</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for quiz in quizzes %}
+                <tr>
+                    <td>{{ quiz.title }}</td>
+                    <td>{{ quiz.description }}</td>
+                    <td>{{ quiz.questions|length }}</td>
+                    <td>
+                        <a href="{{ path('app_quiz_show', {'id': quiz.id}) }}">Show</a>
+                        <a href="{{ path('app_quiz_edit', {'id': quiz.id}) }}">Edit</a>
+                        {{ include('quiz/_delete_form.html.twig', {'quiz': quiz}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">No quiz found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_quiz_new') }}">Create new quiz</a>
+{% endblock %}

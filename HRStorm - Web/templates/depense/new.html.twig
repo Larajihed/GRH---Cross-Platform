@@ -1,0 +1,13 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Nouvelle Dépense{% endblock %}
+
+{% block content %}
+    <h1>Nouvelle Dépense</h1>
+
+    {{ include('depense/_form.html.twig') }}
+    
+    <a href="{{ path('app_depense_index') }}">Retour au liste</a>
+
+    <a class="btn btn-block" href="{{ path('app_depense_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+{% endblock %}

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.user.MainDashboardController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="810.0" prefWidth="1013.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="810.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0">
+               <fill>
+                  <LinearGradient endX="1.0">
+                     <stops>
+                        <Stop color="#3166f7" />
+                        <Stop color="#3285fa9b" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="826.0" layoutX="200.0" layoutY="-16.0" stroke="TRANSPARENT" strokeDashOffset="20.0" strokeLineCap="ROUND" strokeMiterLimit="20.0" strokeType="INSIDE" width="817.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#edededae" />
+                        <Stop color="#eeeeee" offset="0.8954248366013071" />
+                        <Stop color="#1e92ff00" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <ImageView fitHeight="209.0" fitWidth="206.0" focusTraversable="true" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../feuilletemps/logowhite.png" />
+               </image>
+              
+            </ImageView>
+            <Label fx:id="Home" layoutX="41.0" layoutY="151.0" onMouseClicked="#redirectHome" prefHeight="49.0" prefWidth="87.0" text="Home" textFill="WHITE">
+               <font>
+                  <Font name="SansSerif Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="WelcomeName" layoutX="782.0" layoutY="14.0" onMouseClicked="#updateProfile" prefHeight="21.0" prefWidth="200.0" text="Label" textFill="#14a800">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="redirectUser" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="352.0" layoutY="93.0" onMouseClicked="#redirectToUsers" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="0.7772511848341233" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.27843138575553894" green="0.8705882430076599" blue="1.0" opacity="0.36000001430511475" />
+                           </color></Stop>
+                        <Stop offset="0.007662835249042145">
+                           <color>
+                              <Color red="0.27843138575553894" green="0.8705882430076599" blue="1.0" opacity="0.36000001430511475" />
+                           </color></Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle fx:id="buttonconge" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="352.0" layoutY="189.0" onMouseClicked="#redirectToCon" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.9478672985781991" startX="1.0" startY="0.8009478672985781">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2800000011920929" green="0.8705036044120789" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
+            <Rectangle fx:id="buttonrec" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="352.0" layoutY="288.0" onMouseClicked="#redirectToRec" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.9478672985781991" startX="1.0" startY="0.8009478672985781">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2800000011920929" green="0.8705036044120789" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
+            <Rectangle fx:id="ButtonPlanning" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="352.0" layoutY="388.0" onMouseClicked="#redirectToPlanning" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.9478672985781991" startX="1.0" startY="0.8009478672985781">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.2800000011920929" green="0.8705036044120789" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></Rectangle>
+            <Label fx:id="labeluser" layoutX="466.0" layoutY="115.0" onMouseClicked="#redirectToUsers" text="Gestion d'utilisateurs" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelconge" layoutX="466.0" layoutY="211.0" onMouseClicked="#redirectToCon" text="Gestion de congés" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelrec" layoutX="466.0" layoutY="310.0" onMouseClicked="#redirectToRec" text="Gestion de Recrutements" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelPlanning" layoutX="466.0" layoutY="410.0" onMouseClicked="#redirectToPlanning" text="Gestion de Planning" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="Logout" layoutX="782.0" layoutY="35.0" onMouseClicked="#redirectToLandingPage" prefHeight="49.0" prefWidth="129.0" text="Déconnexion">
+               <font>
+                  <Font name="SansSerif Bold" size="19.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="ButtonEval" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="352.0" layoutY="499.0" onMouseClicked="#redirectToEval" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.9478672985781991" startX="1.0" startY="0.8009478672985781">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.27843138575553894" green="0.8705882430076599" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label fx:id="labelEval" layoutX="464.0" layoutY="521.0" onMouseClicked="#redirectToEval" text="Gestion d'Evaluation" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="ButtonBudget" arcHeight="500.0" arcWidth="100.0" height="76.0" layoutX="353.0" layoutY="605.0" onMouseClicked="#redirectToEval" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="447.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="0.9478672985781991" startX="1.0" startY="0.8009478672985781">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.1921568661928177" green="0.4000000059604645" blue="0.9686274528503418" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.27843138575553894" green="0.8705882430076599" blue="1.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Label fx:id="labelBudget" layoutX="465.0" layoutY="627.0" onMouseClicked="#RedirectoBudget" text="Gestion de Budget" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

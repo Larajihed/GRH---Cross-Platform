@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Recrutement.ListRecrutmentCondFXMLController">
+   <children>
+      <TableView fx:id="listRec" layoutX="16.0" layoutY="48.0" prefHeight="404.0" prefWidth="975.0" style="-fx-alignment: center;">
+        <columns>
+          <TableColumn fx:id="titre" prefWidth="150.0" style="-fx-alignment: center;" text="Titre" />
+          <TableColumn fx:id="description" prefWidth="350.0" style="-fx-alignment: center;" text="Description" />
+            <TableColumn fx:id="nbPoste" prefWidth="75.0" style="-fx-alignment: center;" text="Nbrposte" />
+            <TableColumn fx:id="salaire" prefWidth="75.0" style="-fx-alignment: center;" text="Salaire" />
+            <TableColumn fx:id="type" prefWidth="75.0" style="-fx-alignment: center;" text="Type" />
+            <TableColumn fx:id="action" prefWidth="249.0" style="-fx-alignment: center;" text="Action" />
+        </columns>
+      </TableView>
+      <Pagination fx:id="table_pagi" layoutX="16.0" layoutY="48.0" prefHeight="445.0" prefWidth="975.0" />
+      <Text fill="#001eff" layoutX="294.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Postuler pour une de nos offres d'emploi">
+         <font>
+            <Font name="Book Antiqua" size="25.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="27.0" layoutY="6.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

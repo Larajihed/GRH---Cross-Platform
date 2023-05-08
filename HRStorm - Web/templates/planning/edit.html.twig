@@ -1,0 +1,81 @@
+{% extends '/employee/index.html.twig' %}
+
+
+{% block stylesheets %}
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-2">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Update a planning</h1>
+                            </div>
+
+                            {{ form_start(form, {'attr':{'novalidate':'novalidate'}}) }}
+
+
+                            <form class="user">
+                                <div class="form-group">
+                                    {{ form_label(form.nom, 'Nom du Planning') }}
+                                    {{ form_widget(form.nom ,{'attr': {'class': 'form-control','placeholder': 'Nom'}}) }}
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        {{ form_label(form.dateDebut, "Date de Debut" ) }}
+                                        {{ form_widget(form.dateDebut, {'attr': {'class': 'form-control form-control-user ','placeholder': 'DD/MM/YYYY'}}) }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ form_label(form.dateFin, "Date de Fin" ) }}
+                                        {{ form_widget(form.dateFin, {'attr': {'class': 'form-control form-control-user ','placeholder': 'DD/MM/YYYY'}}) }}
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form_label(form.description, 'Description du Planning') }}
+                                    {{ form_widget(form.description ,{'attr': {'class': 'form-control','placeholder': 'description'}}) }}
+                                </div>
+
+                                {{ form_widget(form.submit, {'attr': {'class': 'form-control btn btn-primary mr-2' , 'button_label': 'Update'}}) }}
+                                {{ form_widget(form.cancel, {'attr': {'class': 'form-control btn btn-light mr-2' }}) }}
+
+
+
+
+
+                                {{ form_end(form) }}
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        <div class="p-5">
+                            <a class="form-control btn btn-info btn-sm"  href="{{ path('app_planning_index') }}">back to list</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}

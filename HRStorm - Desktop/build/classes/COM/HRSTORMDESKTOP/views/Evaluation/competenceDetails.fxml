@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Evaluation.CompetenceDetails">
+    <Label layoutX="270.0" layoutY="104.0" text="Nom:">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+    <Label fx:id="nomLabel" layoutX="395.0" layoutY="104.0" text="">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+    <Label layoutX="270.0" layoutY="154.0" text="Description:">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+    <Label fx:id="descriptionLabel" layoutX="395.0" layoutY="154.0" prefWidth="270" text="" wrapText="true">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
+
+
+   <Button layoutX="270.0" layoutY="237.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" text="Modifier" onAction="#editCompetence" />
+   <Button layoutX="395.0" layoutY="237.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" text="Supprimer" onAction="#deleteCompetence" />
+   <Button layoutX="159.0" layoutY="31.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="110.0" text="Retour" onAction="#handleBack"/>
+
+
+</AnchorPane>

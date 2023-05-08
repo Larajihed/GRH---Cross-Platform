@@ -1,0 +1,41 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}SoldeConge{% endblock %}
+
+{% block content %}
+    <h1>SoldeConge</h1>
+    <div style="
+       width: 64px;
+    margin-bottom: 15px;
+    float: right;
+    margin-top: -24px;
+    margin-right: 35px;">    
+        <a href="{{ path('app_solde_conge_index') }}">
+
+
+    <button class="btn btn-outline-primary"> 
+    <i class="fa fa-undo"></i>
+
+    Retour
+    </button>
+</a>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ solde_conge.id }}</td>
+            </tr>
+            <tr>
+                <th>Solde</th>
+                <td>{{ solde_conge.solde }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+{% endblock %}
+
+

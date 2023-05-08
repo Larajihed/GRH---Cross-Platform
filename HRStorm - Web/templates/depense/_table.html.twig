@@ -1,0 +1,32 @@
+{% if depenses|length == 0 %}
+    <p>Aucun Resultat !</p>
+{% else %}
+    {% if searchTerm is empty %}
+        <p>Afficher toutes les depenses:</p>
+
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Montant</th>
+            <th>Date</th>
+            <th>Justificatif</th>
+            <th>Catégorie</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for depense in depenses %}
+            <tr>
+                <td>{{ depense.nom }}</td>
+                <td>{{ depense.montant }}</td>
+                <td>{{ depense.date ? depense.date|date('Y-m-d') : '' }}</td>
+                <td>{{ depense.justificatif }}</td>
+                <td>{{ depense.categorie }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

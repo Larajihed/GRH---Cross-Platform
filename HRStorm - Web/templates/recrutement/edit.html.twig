@@ -1,0 +1,13 @@
+{% extends '/employee/index.html.twig' %}
+
+
+{% block title %}Edit Recrutement{% endblock %}
+
+{% block content %}
+    <h1>Modifier une campagne de recrutement</h1>
+
+    {{ include('recrutement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a class="btn btn-secondary" href="{{ path('app_recrutement_index') }}">Retour a la liste</a>
+
+{% endblock %}

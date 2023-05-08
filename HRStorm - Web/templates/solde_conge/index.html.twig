@@ -1,0 +1,65 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}SoldeConge index{% endblock %}
+
+{% block content %}
+    <h1>SoldeConge index</h1>
+    <div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 63px;">        
+    <a href="{{ path('app_solde_conge_new') }}">
+    
+
+    <button class="btn btn-success"> <i class="fa fa-plus" aria-hidden="true"></i> Ajouter Solde
+
+
+    </button>
+    </a>
+</div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Solde</th>
+                <th>Nom </th>
+                <th>prenom </th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for solde_conge in solde_conges %}
+            <tr>
+                <td>{{ solde_conge.id }}</td>
+                <td>{{ solde_conge.solde }}</td>
+                <td>{{ solde_conge.id_user.nom }} <td> 
+                <tdW>{{ solde_conge.id_user.prenom }} </td>
+
+
+
+                <td>
+                <a href="{{ path('app_solde_conge_show', {'id': solde_conge.id}) }}">
+                            <button type="button" class="btn btn-primary">
+                <i class="fas fa-eye"></i>
+                               Voir
+                             </button>
+                </a> 
+                  <a href="{{ path('app_solde_conge_edit', {'id': solde_conge.id}) }}">
+                            <button type="button" class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                                     Modifier
+                             </button>
+                </a> 
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        
+{% endblock %}

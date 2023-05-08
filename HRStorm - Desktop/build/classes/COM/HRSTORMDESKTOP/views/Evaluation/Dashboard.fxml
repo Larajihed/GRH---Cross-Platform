@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="647.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Evaluation.Dashboard">
+   <children>
+      <Rectangle arcHeight="21.0" arcWidth="22.0" fill="#0000000b" height="95.0" layoutX="747.0" layoutY="118.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="21.0" arcWidth="22.0" fill="#0000000b" height="95.0" layoutX="512.0" layoutY="118.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="21.0" arcWidth="22.0" fill="#0000000b" height="95.0" layoutX="276.0" layoutY="118.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="21.0" arcWidth="22.0" fill="#0000000b" height="95.0" layoutX="38.0" layoutY="114.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1000ea" height="80.0" layoutY="14.0" stroke="#ffffff00" strokeType="INSIDE" width="790.0" />
+
+      <AnchorPane fx:id="pieChartPane" layoutX="19.0" layoutY="236.0" prefHeight="300.0" prefWidth="300.0" />
+
+<AnchorPane fx:id="barChartPane" layoutX="453.0" layoutY="236.0" prefHeight="300.0" prefWidth="600.0" />
+      <Text fill="WHITE" layoutX="90.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboard">
+         <font>
+            <Font name="Dubai Bold" size="27.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="21.0" arcWidth="22.0" height="95.0" layoutX="28.0" layoutY="104.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.018697241321206093" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="1.0" green="0.9784263968467712" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="0.34170880913734436" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="21.0" arcWidth="22.0" height="95.0" layoutX="268.0" layoutY="108.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color green="0.8424704074859619" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color green="0.8424704074859619" blue="1.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.47294414043426514" green="0.7699999809265137" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="21.0" arcWidth="22.0" height="95.0" layoutX="502.0" layoutY="108.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9983922839164734" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color green="0.6761929392814636" blue="0.7699999809265137" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Button layoutX="487.0" layoutY="17.0" mnemonicParsing="false" onAction="#showPostes" prefHeight="73.0" prefWidth="146.0" style="-fx-background-color: #1020ea;" text="Fiche De Poste" textFill="WHITE">
+         <font>
+            <Font name="Dubai Regular" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="239.0" layoutY="17.0" mnemonicParsing="false" onAction="#showEvaluations" prefHeight="73.0" prefWidth="248.0" style="-fx-background-color: #1020ea; -fx-border-radius: 250px;" text="Evaluation des Employées" textFill="WHITE">
+         <font>
+            <Font name="Dubai Medium" size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="633.0" layoutY="16.0" mnemonicParsing="false" onAction="#showCompetences" prefHeight="74.0" prefWidth="157.0" style="-fx-background-color: #1020ea;" text="Compétences" textFill="WHITE">
+         <font>
+            <Font name="Dubai Regular" size="18.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="21.0" arcWidth="22.0" height="95.0" layoutX="735.0" layoutY="108.0" smooth="false" stroke="WHITE" strokeDashOffset="59.0" strokeLineCap="ROUND" strokeMiterLimit="1.0" strokeType="INSIDE" strokeWidth="0.0" width="200.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" blue="0.9983922839164734" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="1.0" blue="0.9983922839164734" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="0.4483082592487335" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Text fill="WHITE" layoutX="46.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totals Evaluations">
+         <font>
+            <Font name="Dubai Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text fx:id="totEval" fill="WHITE" layoutX="109.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01">
+         <font>
+            <Font name="Dubai Bold" size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="286.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totals Compétences">
+         <font>
+            <Font name="Dubai Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text fx:id="totcomp" fill="WHITE" layoutX="349.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="02">
+         <font>
+            <Font name="Dubai Bold" size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="530.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totals Employées">
+         <font>
+            <Font name="Dubai Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text fx:id="totemp" fill="WHITE" layoutX="583.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="03">
+         <font>
+            <Font name="Dubai Bold" size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="780.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Totals Postes">
+         <font>
+            <Font name="Dubai Bold" size="19.0" />
+         </font>
+      </Text>
+      <Text fx:id="totpos" fill="WHITE" layoutX="816.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="04">
+         <font>
+            <Font name="Dubai Bold" size="35.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="90.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HRSTORM">
+         <font>
+            <Font name="Dubai Regular" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="27.0" layoutY="34.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+
+   </children>
+</AnchorPane>

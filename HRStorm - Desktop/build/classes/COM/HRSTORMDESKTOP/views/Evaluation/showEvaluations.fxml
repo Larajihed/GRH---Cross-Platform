@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" prefHeight="580.0" prefWidth="1000" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Evaluation.showEvaluations">
+   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1000ea" height="80.0" layoutX="-19.0" layoutY="24.0" stroke="#ffffff00" strokeType="INSIDE" width="499.0" />
+   <Text fill="WHITE" layoutX="38.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Evaluations">
+      <font>
+         <Font name="Dubai Bold" size="27.0" />
+      </font>
+   </Text>
+   <Text fill="WHITE" layoutX="38.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HRSTORM">
+      <font>
+         <Font name="Dubai Regular" size="16.0" />
+      </font>
+   </Text>
+   
+   <ScrollPane layoutX="40.0" layoutY="126.0" prefHeight="410.0" prefWidth="866.0">
+        <AnchorPane>
+            <VBox fx:id="evaluationsContainer" spacing="10" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                
+            </VBox>
+        </AnchorPane>
+   </ScrollPane>
+ 
+   <Button layoutX="245.0" layoutY="39.0" onAction="#showAddPoste" prefHeight="26.0" prefWidth="216.0" style="-fx-background-color: white;" text="Nouvelle Evaluation">
+      <font>
+         <Font name="Dubai Regular" size="19.0" />
+      </font>
+   </Button>
+   <Label layoutX="89.0" layoutY="20.0" style="-fx-font-weight: bold;">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+
+   <Label layoutX="40.0" layoutY="548.0" text="CTRL+N : Nouvelle Evaluation" />
+   <Label layoutX="230.0" layoutY="548.0" text="CTRL+Q : Quitter" />
+   
+   <Label layoutX="492.0" layoutY="36.0" text="Date from: " />
+   <DatePicker fx:id="dateFromPicker" layoutX="558.0" layoutY="23.0" prefHeight="35.0" prefWidth="171.0" />
+   <DatePicker fx:id="dateToPicker" layoutX="558.0" layoutY="70.0" prefHeight="35.0" prefWidth="171.0" />
+   <Button layoutX="742.0" layoutY="72.0" onAction="#filterEvaluations" prefHeight="35.0" prefWidth="60.0" style="-fx-background-color: white;" text="Filter">
+      <font>
+         <Font name="Dubai Regular" size="12.0" />
+      </font></Button>
+   <Label layoutX="499.0" layoutY="78.0" text="Date to: " />
+
+      
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

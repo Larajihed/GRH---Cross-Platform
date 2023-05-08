@@ -1,0 +1,37 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Table des salaires{% endblock %}
+
+{% block content %}
+    <h1>Salaire</h1>
+
+    <table class="table">
+        <tbody>
+
+           <tr>
+                <th>Id_user</th>
+                <td>{{ salaire.idUser }}</td>
+            </tr>
+           <tr>
+                <th>Montant</th>
+                <td>{{ salaire.montant }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ salaire.date ? salaire.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Taux_augmentation</th>
+                <td>{{ salaire.tauxAugmentation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_salaire_index') }}">Retour au liste</a>
+
+   <!-- <a href="{{ path('app_salaire_edit', {'id': salaire.id}) }}">Modifier</a>-->
+    <!--<button class="bouton-rouge">Modifier</button>-->
+
+
+    {{ include('salaire/_delete_form.html.twig') }}
+{% endblock %}

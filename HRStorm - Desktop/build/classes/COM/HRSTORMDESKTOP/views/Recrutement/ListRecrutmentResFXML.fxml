@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Recrutement.ListRecrutmentResFXMLController">
+   <children>
+      <Pagination fx:id="table_pagi" layoutX="13.0" layoutY="58.0" prefHeight="443.0" prefWidth="975.0" />
+      <TableView fx:id="listRec" layoutX="13.0" layoutY="58.0" prefHeight="397.0" prefWidth="975.0">
+        <columns>
+          <TableColumn fx:id="titre" prefWidth="150.0" text="Titre" />
+          <TableColumn fx:id="description" prefWidth="350.0" text="Description" />
+            <TableColumn fx:id="nbPoste" prefWidth="75.0" text="Nbrposte" />
+            <TableColumn fx:id="salaire" prefWidth="75.0" text="Salaire" />
+            <TableColumn fx:id="type" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="action" prefWidth="249.0" text="Action" />
+        </columns>
+      </TableView>
+      <Button layoutX="170.0" layoutY="17.0" mnemonicParsing="false" onAction="#ajouterRec" text="Ajouter une offre" />
+      <Button layoutX="318.0" layoutY="17.0" mnemonicParsing="false" onAction="#ActualiserList" text="Actualiser" />
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="20.0" layoutY="10.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,106 @@
+{% extends "/joboffers.html.twig" %}
+{% block title %}Les campagne de recrutement{% endblock %}
+
+{% block content %}
+<html>
+<head>
+    <title>Recrutement index</title>
+    <style>
+        /* Style the page header */
+        h1 {
+            color: #007bff;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Style the table */
+        .table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        /* Style the table header cells */
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            padding: 10px;
+            text-align: left;
+        }
+
+        /* Style the table cells */
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        /* Style the "Apply" button */
+        a[href^="http"] {
+            background-color: #007bff;
+            border-radius: 4px;
+            color: #fff;
+            display: inline-block;
+            padding: 6px 12px;
+            text-decoration: none;
+        }
+
+        a[href^="http"]:hover {
+            background-color: #0069d9;
+        }
+
+    </style>
+</head>
+<body>
+
+    <table class="table">
+        <thead>
+        <tr style="background-color: #f0f0f0;">
+            <th style="padding: 10px; text-align: left;">Titre</th>
+            <th style="padding: 10px; text-align: left;">Description</th>
+            <th style="padding: 10px; text-align: left;">Nbrposte</th>
+            <th style="padding: 10px; text-align: left;">Salaire</th>
+            <th style="padding: 10px; text-align: left;">Type</th>
+            <th style="padding: 10px; text-align: left;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for recrutement in recrutements %}
+            <tr>
+                <td style="padding: 10px;">{{ recrutement.titre }}</td>
+                <td style="padding: 10px;">{{ recrutement.description }}</td>
+                <td style="padding: 10px;">{{ recrutement.nbrposte }}</td>
+                <td style="padding: 10px;">{{ recrutement.salaire }}</td>
+                <td style="padding: 10px;">{{ recrutement.type }}</td>
+                <td style="padding: 10px;">
+                    <a class="btn btn-primary" href="{{ path('app_candidat_new', {'id': recrutement.id}) }}">Apply</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td style="padding: 10px; text-align: center;" colspan="6">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    <!-- BotMan -->
+    <script>
+        var botmanWidget = {
+            bubbleAvatarUrl: '{{ asset('home/assets/img/logoBotman.png') }}',
+            frameEndpoint: '{{ path("chatframe") }}',
+            chatServer: '{{ path("messageBotMan") }}',
+            introMessage: 'Salut, je suis HrStorm_Chatbot. Je suis là pour repondre a vous questions. ',
+            title: 'HrStorm_Chatbot',
+            mainColor: '#456765',
+            bubbleBackground: '#ff76f4',
+            aboutText: ''
+        };
+    </script>
+    <script src='https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js'></script>
+
+</body>
+</html>
+{% endblock %}

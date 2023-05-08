@@ -1,0 +1,16 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block content %}
+    <h1>Edit quiz: {{ quiz.title }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.questions) }}
+        <button type="submit" class="btn btn-primary">Save</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_quiz_show', {'id': quiz.id}) }}">Back to quiz</a>
+
+    {{ include('quiz/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="1109.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Budget.AfficherDepenseController">
+   <children>
+      <TextField fx:id="nom" layoutX="149.0" layoutY="201.0" />
+      <TextField fx:id="montant" layoutX="149.0" layoutY="249.0" />
+      <TextField fx:id="just" layoutX="149.0" layoutY="300.0" />
+      <DatePicker fx:id="date" layoutX="141.0" layoutY="356.0" prefHeight="31.0" prefWidth="204.0" />
+      <ComboBox fx:id="catCOM" layoutX="141.0" layoutY="419.0" prefHeight="31.0" prefWidth="204.0" />
+      <ComboBox fx:id="budgetCom" layoutX="149.0" layoutY="150.0" prefHeight="31.0" prefWidth="187.0" />
+      <Label layoutX="44.0" layoutY="155.0" text="budget" />
+      <Label layoutX="44.0" layoutY="206.0" text="nom" />
+      <Label layoutX="44.0" layoutY="254.0" text="montant" />
+      <Label layoutX="44.0" layoutY="300.0" text="justificatif" />
+      <Label layoutX="44.0" layoutY="361.0" text="date" />
+      <Label layoutX="44.0" layoutY="424.0" text="categorie" />
+      <TableView fx:id="tableview" layoutX="431.0" layoutY="103.0" onMouseClicked="#pressetab" prefHeight="347.0" prefWidth="649.0">
+        <columns>
+          <TableColumn fx:id="budcol" prefWidth="75.0" text="budget" />
+            <TableColumn fx:id="nomcol" prefWidth="75.0" text="nom" />
+            <TableColumn fx:id="montantcol" prefWidth="75.0" text="montant" />
+            <TableColumn fx:id="datecol" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="justificatifcol" prefWidth="107.0" text="justificatif" />
+            <TableColumn fx:id="catCol" prefWidth="83.0" text="categorie" />
+        </columns>
+      </TableView>
+      <Button fx:id="modfier" layoutX="76.0" layoutY="544.0" mnemonicParsing="false" onAction="#modifierDepense" prefHeight="31.0" prefWidth="130.0" text="Modifier" textFill="#29e33c" />
+      <Button fx:id="delete" layoutX="817.0" layoutY="544.0" mnemonicParsing="false" onAction="#deleteDepense" prefHeight="31.0" prefWidth="142.0" style="-fx-background-color: red;" text="Supprimer" />
+      <Button fx:id="back" layoutX="203.0" layoutY="24.0" mnemonicParsing="false" onAction="#backAjout" text="Afiicher Dépense" textFill="#d01919" />
+      <Text fill="#0e69e8" layoutX="633.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dépense">
+         <font>
+            <Font name="System Bold Italic" size="36.0" />
+         </font>
+      </Text>
+      <Button fx:id="budget" layoutX="116.0" layoutY="24.0" mnemonicParsing="false" onAction="#budget" text="G Budget" textFill="#0e69e8" />
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="25.0" layoutY="14.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

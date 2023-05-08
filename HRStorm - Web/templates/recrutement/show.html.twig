@@ -1,0 +1,42 @@
+{% extends '/employee/index.html.twig' %}
+
+
+{% block title %}Recrutement{% endblock %}
+
+{% block content %}
+    <h1>Campagne de recrutement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ recrutement.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ recrutement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ recrutement.description }}</td>
+            </tr>
+            <tr>
+                <th>Nbrposte</th>
+                <td>{{ recrutement.nbrposte }}</td>
+            </tr>
+            <tr>
+                <th>Salaire</th>
+                <td>{{ recrutement.salaire }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ recrutement.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_recrutement_index') }}">Retour a la liste</a>
+
+    <a class="btn btn-secondary" href="{{ path('app_recrutement_edit', {'id': recrutement.id}) }}">Modifier</a>
+
+{% endblock %}

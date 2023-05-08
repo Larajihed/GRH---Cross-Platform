@@ -1,0 +1,42 @@
+{# templates/search.html.twig #}
+{% extends "/employee/index.html.twig" %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <h1>Search Evaluations</h1>
+        <form id="search-form" method="post">
+            <div class="form-group">
+                <label for="search-term">Search Term:</label>
+                <input type="text" name="searchTerm" id="search-term" class="form-control" value="{{ searchTerm }}">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <div id="search-results">
+            {% include '/hr_employee/evaluation/_table.html.twig' %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+        $('#search-form').submit(function(event) {
+            event.preventDefault();
+            var searchTerm = $('#search-term').val();
+            $.ajax({
+                type: 'post',
+                url: '{{ path('search_evaluations') }}',
+                data: {searchTerm: searchTerm},
+                success: function(response) {
+                    // Replace the table in the search results div with the new table HTML
+                    $('#search-results table').replaceWith(response);
+                }
+            });
+        });
+    </script>
+{% endblock %}

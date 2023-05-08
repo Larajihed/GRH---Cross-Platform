@@ -1,0 +1,57 @@
+{# templates/search.html.twig #}
+{% extends "/employee/index.html.twig" %}
+{% block title %}Recherche Congé {% endblock %}
+
+
+
+{% block content %}
+
+    <div class="container">
+        <h1>Rechercher Conge</h1>
+        <div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 23px;">         
+    <a href="{{ path('app_conge_rh') }}">
+     <button class="btn btn-outline-primary" style="
+    width: 150px;"
+>  
+<i class="fa fa-undo"></i>
+
+  Retour 
+    </button>
+</a>
+    </div>
+        <form id="search-form" method="post">
+            <div class="form-group">
+                <label for="search-term">Recherche par Categorie ou Date</label>
+                <input type="text" name="searchTerm" id="search-term" class="form-control" value="{{ searchTerm }}">
+            </div>
+        </form>
+        <div id="search-results">
+            {% include 'conge_rh/_table.html.twig' %}
+        </div>
+    </div>
+
+    {% block javascripts %}
+    <script
+            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">
+    </script>
+    <script>
+     $('#search-form').on('input',function(event) {
+    event.preventDefault();
+    var searchTerm = $('#search-term').val();
+    $.ajax({
+        type: 'post',
+        url: '{{ path('search_conge') }}',
+        data: {searchTerm: searchTerm},
+        success: function(response) {
+            // Replace the table in the search results div with the new table HTML
+            $('#search-results table').replaceWith(response);
+        }
+    });
+});
+    </script>
+{% endblock %}
+{% endblock %}
+

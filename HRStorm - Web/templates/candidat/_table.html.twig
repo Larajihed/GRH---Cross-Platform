@@ -1,0 +1,50 @@
+{% if candidats|length == 0 %}
+    <p>No results found.</p>
+{% else %}
+    {% if searchTerm is empty %}
+        <p>Afficher tous les candidats:</p>
+
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Datenaissance</th>
+            <th>Tel</th>
+            <th>Email</th>
+            <th>etat </th>
+            <th>cv </th>
+
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for candidat in candidats %}
+            <tr>
+                <td>{{ candidat.nom }}</td>
+                <td>{{ candidat.prenom }}</td>
+                <td>{{ candidat.datenaissance ? candidat.datenaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ candidat.tel }}</td>
+                <td>{{ candidat.email }}</td>
+                <td>
+                    <a target="_blank"  href="/uploads/candidat/{{candidat.cv}}" class="modal-trigger">Consulter CV</a>
+                </td>
+                {%if (candidat.etat=="0") %}
+                    <td> En attente </td>
+                {% endif %}
+                {%if (candidat.etat=="1") %}
+                    <td>  Accepté </td>
+                {% endif %}
+                {%if (candidat.etat=="2") %}
+                    <td> Refusé </td>
+                {% endif %}
+
+                <td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}

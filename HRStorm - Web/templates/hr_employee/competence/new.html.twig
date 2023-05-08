@@ -1,0 +1,12 @@
+{% extends "/employee/index.html.twig" %}
+
+{% block title %}New Competence{% endblock %}
+
+
+{% block content %}
+    <h1>Nouvelle Competence</h1>
+
+    {{ include('hr_employee/competence/_form.html.twig') }}
+    
+    <a href="{{ path('app_competence_index') }}">back to list</a>
+{% endblock %}

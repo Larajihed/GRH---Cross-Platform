@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="292.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Recrutement.ResponsableFXMLController">
+   <children>
+      <Button fx:id="can" contentDisplay="CENTER" layoutX="46.0" layoutY="151.0" mnemonicParsing="false" onAction="#ListCandidats" prefHeight="48.0" prefWidth="290.0" style="-fx-background-color: #3166f7;" text="Consulter les candidats" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="rec" contentDisplay="CENTER" layoutX="47.0" layoutY="84.0" mnemonicParsing="false" onAction="#ListRecrutement" prefHeight="48.0" prefWidth="290.0" style="-fx-background-color: #3166f7;" text="Consuter les recrutements" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

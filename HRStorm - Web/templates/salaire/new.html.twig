@@ -1,0 +1,11 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Nouvelle Salaire{% endblock %}
+
+{% block content %}
+    <h1>Ajouter Salaire</h1>
+
+    {{ include('salaire/_form.html.twig') }}
+
+    <a class="btn btn-block" href="{{ path('app_salaire_index') }}"><i class="fas fa-arrow-left"></i> Retour à la liste</a>
+{% endblock %}

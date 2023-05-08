@@ -1,0 +1,108 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Dépense index{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="">Gestion du dépense</h1>
+                <div style="text-align: right;">
+                    <a class="btn btn-dark text-light float-right" href="{{ path('search_depense_page') }}"><i class="bi bi-search"></i> Recherche  </a>
+                </div>
+                <div class="text-right">
+                    <a href="{{ path('app_depense_new') }}" class="btn btn-success"><i class="fas fa-plus"></i>Ajouter dépense</a>
+                    <a href="#" style="margin-right: 10px;"></a>
+                </div>
+
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_budget_index') }}"><i class="fas fa-calculator"></i>Table des budget</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_salaire_index') }}"><i class="fas fa-bank"></i>Table des salaires</a>
+                    </li>
+                    <!--<li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_categorie_index') }}">Table des categories</a>
+                    </li>-->
+                </ul>
+                <div id="wrap">
+                    <ul class="navbar">
+                            <a href="{{ path('app_depense_index')}}"class="btn btn-warning">Actualiser</a>
+
+                        <!--<a href="#">Trie :</a>-->
+
+                            <ul><a href="{{ path('order_By_Date')}}"class="btn btn-default">Trie par date</a></ul>
+                            <ul><a href="{{ path('order_By_Montant')}}"class="btn btn-default">Trie par montant</a></ul>
+
+                       <!-- <a href="#">Recherche :</a>
+                        <ul>
+                            <li><a href="{{ path('listSalaireWithSearchid')}}">Recherche Par id_user</a></li>
+                        </ul>-->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+        <table class="table">
+            <thead>
+            <tr>
+
+              <!--  <a class="btn btn-success" href="{path('PDF') }">  PDF </a>-->
+                <script type="text/javascript">
+                    function imprimer_page(){
+                        window.print();
+                    }
+                </script>
+                <form>
+                    <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+                </form>
+            </tr>
+            <tr>
+               <!-- <th>Id</th>-->
+                <th>Nom</th>
+                <th>Montant</th>
+                <th>Date</th>
+                <th>Justificatif</th>
+                <th>Catégorie</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for depense in depenses %}
+            <tr>
+                <!-- <td>{{ depense.id }}</td> -->
+                <td>{{ depense.nom }}</td>
+                <td>{{ depense.montant }}</td>
+                <td>{{ depense.date ? depense.date|date('Y-m-d') : '' }}</td>
+                <td>{{ depense.justificatif }}</td>
+                <td>{{ depense.categorie }}</td>
+                <td>
+                    <a class="btn btn-dark" href="{{ path('app_depense_edit', {'id': depense.id}) }}"><i class="fas fa-edit"></i>Modifier</a>
+                    <a class="btn btn-danger" href="{{ path('app_depense_delete', {'id': depense.id}) }}"><i class="fas fa-trash"></i>Supprimer</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row no-gutters align-items-center">
+        <div class="col mr-2">
+            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                Depense </div>
+            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ depenses|length }}</div>
+        </div>
+        <div class="col-auto">
+            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+        </div>
+    </div>
+
+
+{% endblock %}

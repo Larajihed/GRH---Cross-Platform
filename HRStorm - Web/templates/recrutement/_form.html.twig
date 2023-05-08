@@ -1,0 +1,33 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}, 'class': 'form-horizontal'}) }}
+
+    {{ form_errors(form) }}
+
+<div class="form-group">
+    {{ form_label(form.titre, 'titre', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+{{ form_errors(form.titre) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.description, 'description', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.description) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.nbrposte, 'nbrposte', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.nbrposte, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.nbrposte) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.salaire, 'salaire', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.salaire, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.salaire) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.type, 'type', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.type) }}
+</div>
+
+<button type="submit" class="btn btn-primary">Ajouter</button>
+{{ form_end(form) }}

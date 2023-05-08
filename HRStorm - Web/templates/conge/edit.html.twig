@@ -1,0 +1,27 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Edit Conge{% endblock %}
+
+{% block content %}
+    <h1>Edit Conge</h1>
+        <span style="    margin-top: -7px;
+    margin-bottom: 9px;
+    float: right;"> 
+    <a href="{{ path('app_conge_index') }}">
+    
+    <button class="btn btn-outline-primary"> 
+    <i class="fa fa-undo"></i>
+
+    Retour
+    </button>
+    
+    </a>
+    <button class="btn btn-success"><i class="fa fa-calendar" aria-hidden="true"></i>
+ Solde {{solde}} </button>
+      
+     </span>
+
+    {{ include('conge/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('conge/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends '/employee/index.html.twig' %}
+{% block stylesheets %}
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+    {#    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">#}
+
+    {#    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>#}
+
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link
+                href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+                rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+        <link href="css/sb-admin-2.min.css" rel="stylesheet">
+        {#        {{ encore_entry_link_tags('app') }}#}
+
+{% endblock %}
+
+{% block title %}Recrutement index{% endblock %}
+
+{% block content %}
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+    </style>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger">{{ message }}</div>
+
+    {% endfor %}
+    <div class="col-8 offset-3 mt-4">
+        <form method="get">
+            <div class="row mb-3">
+                <div class="col-md-3">
+                    <label for="min-resultat" class="form-label">Nombre Minimum</label>
+                    <input type="number" name="min_resultat" id="min-resultat" class="form-control" value="{{ app.request.get('min_resultat') }}" min="0" >
+                </div>
+                <div class="col-md-3">
+                    <label for="max-resultat" class="form-label">Nombre Maximum</label>
+                    <input type="number" name="max_resultat" id="max-resultat" class="form-control" value="{{ app.request.get('max_resultat') }}" min="0" >
+                </div>
+                <div class="col-md-3">
+                    <button type="submit" class="btn btn-primary mt-4">Filter</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Nombre de post</th>
+                <th>Salaire</th>
+                <th>Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recrutement in recrutements %}
+            <tr>
+                <td>{{ recrutement.titre }}</td>
+                <td>{{ recrutement.description }}</td>
+                <td>{{ recrutement.nbrposte }}</td>
+                <td>{{ recrutement.salaire }}</td>
+                <td>{{ recrutement.type }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('app_recrutement_show', {'id': recrutement.id}) }}">élaborer</a>
+                    <a class="btn btn-secondary" href="{{ path('app_recrutement_edit', {'id': recrutement.id}) }}">modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination">
+        {{ knp_pagination_render(recrutements) }}
+    </div>
+
+    <a class="btn btn-primary" href="{{ path('app_recrutement_new') }}">Créer une nouvelle offre</a>
+{% endblock %}

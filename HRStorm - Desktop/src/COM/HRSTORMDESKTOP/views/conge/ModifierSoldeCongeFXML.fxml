@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="1000" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.conge.ModifierSoldeConge">
+   <AnchorPane layoutX="99.0" layoutY="52.0" prefHeight="331.0" prefWidth="449.0">
+      <children>
+         <TextField id="categorie" fx:id="solde" layoutX="102.0" layoutY="125.0" prefHeight="47.0" prefWidth="321.0" promptText="new solde" />
+         <Label layoutX="22.0" layoutY="136.0" text="Solde">
+            <font>
+               <Font size="16.0" />
+            </font></Label>
+         <Label layoutX="126.0" layoutY="7.0" text="*" textFill="RED" />
+         <Button layoutX="300.0" layoutY="183.0" onAction="#handleInsert" prefHeight="40.0" prefWidth="123.0" style="-fx-background-color: #3166f7;" text="Modifier" textFill="WHITE">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Button>
+         <Label id="errorTxt" layoutX="14.0" layoutY="272.0" textFill="RED" />
+         <Button layoutX="339.0" layoutY="15.0" prefHeight="17.0" prefWidth="96.0" style="-fx-background-color: #4CD5E5;" text="Retour" textFill="WHITE">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Button>
+         <Label layoutX="9.0" layoutY="50.0" style="-fx-font-weight: bold;" text="Modifier Solde Congé">
+            <font>
+               <Font size="24.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

@@ -1,0 +1,15 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="">Gestion du budget</h1>
+            {{ budget.budget }} {{ budget.date ? budget.date|date('M-Y') : '' }}  {{ budget.prime}} {{ budget.budget_materiel }} {{ budget.budget_salaire }} a {{ budget.budget_service }} ans
+
+    </div>
+{% endblock %}
+
+{% block title %}
+        {{ budget.budget }} {{ budget.date ? budget.date|date('M-Y') : '' }}
+{% endblock %}

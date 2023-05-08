@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import jfxtras.scene.control.agenda.Agenda?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Planning.BackController">
+   <children>
+      <VBox alignment="CENTER" prefHeight="601.0" prefWidth="182.0" spacing="30.0" style="-fx-background-color: #37d3e4;">
+         <children>
+            <Button fx:id="btnMenuAgenda" layoutX="34.0" layoutY="257.0" mnemonicParsing="false" onAction="#fnMenuAgenda" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #ffffff;" text="Agenda" textFill="#37d3e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuEvent" mnemonicParsing="false" onAction="#fnMenuPlan" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #ffffff;" text="Planning" textFill="#37d3e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnMenuSponsor" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#fnMenuTache" prefHeight="39.0" prefWidth="131.0" style="-fx-background-color: #ffffff;" text="Tache" textFill="#37d3e4">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <StackPane layoutX="182.0" prefHeight="601.0" prefWidth="618.0">
+         <children>
+            <Pane fx:id="pnFormPlanning" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <HBox layoutX="67.0" layoutY="145.0" prefHeight="351.0" prefWidth="500.0">
+                     <children>
+                        <VBox prefHeight="351.0" prefWidth="229.0" spacing="20.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="229.0" text="Nom">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="229.0" text="Description">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="74.0" prefHeight="64.0" prefWidth="229.0" text="Debut">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="138.0" prefHeight="64.0" prefWidth="229.0" text="Fin">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="351.0" prefWidth="272.0" spacing="40.0">
+                           <children>
+                              <TextField fx:id="tfNomPlan" prefHeight="52.0" prefWidth="272.0" />
+                              <TextField fx:id="tfDescPlan" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="272.0" />
+                              <DatePicker fx:id="tfDebutPlan" prefHeight="40.0" prefWidth="271.0" />
+                              <DatePicker fx:id="tfFinPlan" layoutX="10.0" layoutY="114.0" prefHeight="40.0" prefWidth="271.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Label fx:id="lbTitleAjoutPlanning" layoutX="39.0" layoutY="53.0" prefHeight="48.0" prefWidth="296.0" text="Ajouter un Planning" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbTitleModifyPlanning" layoutX="39.0" layoutY="53.0" prefHeight="48.0" prefWidth="296.0" text="Modifier un Planning" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnConfPlan" layoutX="234.0" layoutY="512.0" mnemonicParsing="false" onAction="#fnConfPlan" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Confirmer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pnFormTache" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <HBox layoutX="67.0" layoutY="145.0" prefHeight="351.0" prefWidth="500.0">
+                     <children>
+                        <VBox prefHeight="351.0" prefWidth="229.0" spacing="20.0">
+                           <children>
+                              <Label prefHeight="64.0" prefWidth="229.0" text="Nom">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="229.0" text="Description">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="94.0" prefHeight="64.0" prefWidth="229.0" text="Priorite">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="74.0" prefHeight="64.0" prefWidth="229.0" text="Planning">
+                                 <font>
+                                    <Font size="29.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="351.0" prefWidth="272.0" spacing="40.0">
+                           <children>
+                              <TextField fx:id="tfNomTache" prefHeight="52.0" prefWidth="272.0" />
+                              <TextField fx:id="tfDescripTache" layoutX="10.0" layoutY="10.0" prefHeight="48.0" prefWidth="272.0" />
+                              <Slider fx:id="tfPrioriteTache" blockIncrement="1.0" majorTickUnit="1.0" max="3.0" min="1.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                              <ComboBox fx:id="tfPlanningTache" prefHeight="50.0" prefWidth="284.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <Label fx:id="lbTitleAjoutTache" layoutX="39.0" layoutY="53.0" prefHeight="48.0" prefWidth="296.0" text="Ajouter une Tache" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbTitleModifyTache" layoutX="39.0" layoutY="53.0" prefHeight="48.0" prefWidth="296.0" text="Modifier une Tache" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnConfTache" layoutX="234.0" layoutY="512.0" mnemonicParsing="false" onAction="#fnConfTache" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Confirmer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pnPlan" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <TableView fx:id="tvPlanning" layoutX="48.0" layoutY="101.0" onMouseClicked="#fnSelectedPlanning" prefHeight="386.0" prefWidth="545.0">
+                    <columns>
+                      <TableColumn fx:id="colNom" prefWidth="75.0" text="Nom" />
+                      <TableColumn fx:id="colDesc" prefWidth="247.0" text="Description" />
+                        <TableColumn fx:id="colDebut" prefWidth="107.0" text="Debut" />
+                        <TableColumn fx:id="colFin" prefWidth="115.0" text="Fin" />
+                    </columns>
+                  </TableView>
+                  <Button fx:id="btnAjoutPlan" layoutX="64.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnAjoutPlan" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnModifyPlan" layoutX="219.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnModifyPlan" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Modifier" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSupprimerPlan" layoutX="383.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnSupprimerEvent" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Supprimer" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="48.0" layoutY="13.0" prefHeight="48.0" prefWidth="114.0" text="Planning" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbIdPlan" layoutX="397.0" layoutY="50.0" visible="false" />
+                  <Button fx:id="btnReset" layoutX="522.0" layoutY="56.0" mnemonicParsing="false" onAction="#fnReset" prefHeight="17.0" prefWidth="71.0" style="-fx-background-color: #37d3e4;" text="Reset" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnFilter" layoutX="428.0" layoutY="56.0" mnemonicParsing="false" onAction="#fnFilter" prefHeight="17.0" prefWidth="71.0" style="-fx-background-color: #37d3e4;" text="Filter" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="tfFinFilter" layoutX="238.0" layoutY="65.0" promptText="Fin" />
+                  <DatePicker fx:id="tfDebutFilter" layoutX="45.0" layoutY="65.0" promptText="Debut" />
+                  <TextField fx:id="tfRechercherPlqnnig" layoutX="164.0" layoutY="25.0" prefHeight="25.0" prefWidth="250.0" promptText="Rechercher..." />
+               </children>
+            </Pane>
+            <Pane fx:id="pnTache" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <TableView fx:id="tvTache" layoutX="48.0" layoutY="101.0" onMouseClicked="#fnSelectedTache" prefHeight="386.0" prefWidth="545.0">
+                     <columns>
+                        <TableColumn fx:id="colNomTache" prefWidth="112.0" text="Nom" />
+                        <TableColumn fx:id="colPlanningTache" prefWidth="111.0" text="Planning" />
+                        <TableColumn fx:id="colDescriptionTache" prefWidth="157.0" text="description" />
+                        <TableColumn fx:id="colPrioriteTache" prefWidth="163.0" text="priorite" />
+                     </columns>
+                  </TableView>
+                  <Button fx:id="btnAjoutTache" layoutX="64.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnAjoutTache" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Ajouter" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnModifyTache" layoutX="219.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnModifyTache" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Modifier" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnSupprimerTache" layoutX="383.0" layoutY="520.0" mnemonicParsing="false" onAction="#fnSupprimerTache" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: #37d3e4;" text="Supprimer" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="48.0" layoutY="26.0" prefHeight="48.0" prefWidth="296.0" text="Tache" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbidTache" layoutX="383.0" layoutY="50.0" visible="false" />
+                  <TextField fx:id="tfRechercherTache" layoutX="147.0" layoutY="38.0" prefHeight="25.0" prefWidth="250.0" promptText="Rechercher..." />
+               </children>
+            </Pane>
+            <Pane fx:id="pnAgenda" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <Label layoutX="59.0" layoutY="23.0" prefHeight="48.0" prefWidth="296.0" text="Agenda" textFill="#37d3e4">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Agenda fx:id="PlanningAgenda" layoutX="90.0" layoutY="145.0" prefHeight="336.0" prefWidth="458.0" />
+               </children>
+            </Pane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

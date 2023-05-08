@@ -1,0 +1,91 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %} Historique de congé{% endblock %}
+
+{% block content %}
+
+<h1>Historique de congé </h1>
+
+<div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 23px;">         
+    <a href="{{ path('app_conge_rh') }}">
+     <button class="btn btn-outline-primary" style="
+    width: 150px;"
+>  
+<i class="fa fa-undo"></i>
+
+  Retour 
+    </button>
+    
+ </a><a href="{{ path('app_conge_rh') }}">
+     <button class="btn btn-outline-primary" style="
+    width: 150px;"
+>  
+<i class="fa fa-undo"></i>
+
+   
+    </button>
+    
+ </a>
+  </div>
+
+ <table class="table">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th> Etat </th>
+                                <th> Action </th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+  
+
+
+
+            <tr>
+                <td>{{ conge.categorie }}</td>
+                <td>{{ conge.description }}</td>
+                <td>{{ conge.debut ? conge.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.fin ? conge.fin|date('Y-m-d') : '' }}</td>
+                {%if (conge.etat=="0") %}
+                        <td> En attente </td>
+                    {% endif %}
+                    {%if (conge.etat=="1") %}
+                         <td>  Accepté </td>
+                    {% endif %}
+                    {%if (conge.etat=="2") %}
+                        <td> Refusé </td>
+                    {% endif %}
+                    
+                    <td>
+    <a href="{{ path('app_conge_rh_show', {'id': conge.id}) }}">
+                    <button type="button" class="btn btn-primary">
+                                    <i class="fas fa-eye"></i>
+
+                      Voir
+                    </button>  
+                    </a>
+                    </td> 
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+      
+
+        </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(conges) }}
+</div>
+
+{% endblock %}

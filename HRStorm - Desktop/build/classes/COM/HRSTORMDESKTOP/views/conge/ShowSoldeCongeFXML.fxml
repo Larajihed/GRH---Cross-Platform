@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="693.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.conge.ShowSoldeCongeController">
+ 
+
+   <Label layoutX="73.0" layoutY="55.0" style="-fx-font-weight: bold;" text="Liste de conge ">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <ListView fx:id="SoldeCongesList" layoutX="67.0" layoutY="119.0" prefHeight="278.0" prefWidth="577.0" />
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

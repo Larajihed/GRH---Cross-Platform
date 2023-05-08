@@ -1,0 +1,56 @@
+{% if conges|length == 0 %}
+    <p>No results found.</p>
+{% else %}
+    {% if searchTerm is empty %}
+
+    {% endif %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>début</th>
+                <th>fin</th>
+                <th> certificat </th>
+
+                <th>Etat</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+  
+
+
+
+            <tr>
+                <td>{{ conge.categorie }}</td>
+                <td>{{ conge.description }}</td>
+                <td>{{ conge.debut ? conge.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.fin ? conge.fin|date('Y-m-d') : '' }}</td>
+               
+              
+            {% if (conge.image == null) %}
+                <td> Pas de Certificat </td>
+                {% else %}
+                <td>
+               <a target="_blank"  href="/uploads/conges/{{conge.image}}" class="modal-trigger">
+
+               <img src="{{ asset('uploads/conges/' ~ conge.image) }}" alt="Image" style="width:200px;"> 
+
+               </a>
+                </td>
+            {% endif %}
+             {%if (conge.etat=="0") %}
+                        <td> En attente </td>
+                    {% endif %}
+                    {%if (conge.etat=="1") %}
+                         <td>  Accepté </td>
+                    {% endif %}
+                    {%if (conge.etat=="2") %}
+                        <td> Refusé </td>
+                    {% endif %}
+                
+                
+                {% endfor %}
+{% endif %}

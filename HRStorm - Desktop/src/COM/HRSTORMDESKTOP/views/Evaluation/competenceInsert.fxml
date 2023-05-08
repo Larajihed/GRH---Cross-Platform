@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="1000" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Evaluation.competenceInsert">
+   <Label layoutX="256.0" layoutY="87.0" style="-fx-font-weight: bold;" text="Ajouter Une Compétence">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <AnchorPane layoutX="245.0" layoutY="122.0" prefHeight="332.0" prefWidth="350.0">
+      <children>
+         <TextField fx:id="nomField" layoutX="11.0" layoutY="31.0" prefHeight="46.0" prefWidth="334.0" promptText="Nom" />
+         <TextField fx:id="descriptionField" layoutX="11.0" layoutY="103.0" prefHeight="110.0" prefWidth="334.0" promptText="Description" />
+         <Label layoutX="11.0" layoutY="10.0" text="Nom de compétence" />
+         <Label layoutX="11.0" layoutY="81.0" text="Description" />
+         <Label layoutX="126.0" layoutY="7.0" text="*" textFill="RED" />
+         <Button layoutX="209.0" layoutY="233.0" onAction="#handleInsert" prefHeight="54.0" prefWidth="135.0" style="-fx-background-color: blue;" text="Ajouter" textFill="WHITE">
+            <font>
+               <Font size="19.0" />
+            </font>
+         </Button>
+         <Label id="errorTxt" layoutX="14.0" layoutY="272.0" textFill="RED" />
+      </children>
+   </AnchorPane>
+   <Button layoutX="256.0" layoutY="46.0" onAction="#handleInsert" prefHeight="26.0" prefWidth="99.0" text="Retour">
+      <font>
+         <Font size="19.0" />
+      </font>
+   </Button>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

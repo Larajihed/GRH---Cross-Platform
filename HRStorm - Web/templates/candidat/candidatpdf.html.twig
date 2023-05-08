@@ -1,0 +1,34 @@
+<h1>Candidat</h1>
+
+<table class="table">
+    <tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ candidat.id }}</td>
+    </tr>
+    <tr>
+        <th>Nom</th>
+        <td>{{ candidat.nom }}</td>
+    </tr>
+    <tr>
+        <th>Prenom</th>
+        <td>{{ candidat.prenom }}</td>
+    </tr>
+    <tr>
+        <th>Date de naissance</th>
+        <td>{{ candidat.datenaissance ? candidat.datenaissance|date('Y-m-d') : '' }}</td>
+    </tr>
+    <tr>
+        <th>Num Tel</th>
+        <td>{{ candidat.tel }}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>{{ candidat.email }}</td>
+    </tr>
+    <tr>
+        <th>Lettre de motivation</th>
+        <td>{{ candidat.lettremotivation }}</td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,69 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %} Détail de demande{% endblock %}
+
+{% block content %}
+    <h1>Conge</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ conge.id }}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ conge.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ conge.description }}</td>
+            </tr>
+             <th>Debut</th>
+                <td>{{ conge.debut ? conge.debut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Fin</th>
+                <td>{{ conge.fin ? conge.fin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                            <th>Certificat</th>
+
+             {%if (conge.image== null) %}
+                <td> Pas de Certificat </td>
+                {% else %}
+                <td>
+               <a target="_blank"  href="/uploads/conges/{{conge.image}}" class="modal-trigger">
+
+               <img src="{{ asset('uploads/conges/' ~ conge.image) }}" alt="Image" style="width:200px;"> 
+
+               </a>
+                </td>
+                {%endif %}
+             <td>
+             </tr>
+             <div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 72px;">
+              <button type="button" class="btn btn-primary">
+                      <a href="{{ path('app_conge_rh') }}"></a> 
+                      Retour
+                    </button>
+                   <button type="button" class="btn btn-success">
+                      <a href="{{ path('app_conge_accepter', {'id': conge.id}) }}"></a> 
+                      Accepter
+                    </button>   
+                   <button type="button" class="btn btn-danger">
+                    <a href="{{ path('app_conge_refuser', {'id': conge.id}) }}"></a> 
+                    Refuser
+                    </button>   
+</div>
+                </td>
+                </tr>
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

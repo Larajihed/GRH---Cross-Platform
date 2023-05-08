@@ -1,0 +1,7 @@
+{% if app.user %}
+    <div class="mt-3">
+        {{ form_start(deleteForm, {'action': path('quiz_delete', {'id': quiz.id}), 'method': 'DELETE'}) }}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        {{ form_end(deleteForm) }}
+    </div>
+{% endif %}

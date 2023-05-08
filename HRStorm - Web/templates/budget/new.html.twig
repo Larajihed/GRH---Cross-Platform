@@ -1,0 +1,14 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Mon Budget{% endblock %}
+
+{% block content %}
+    <h1>Ajouter Budget</h1>
+
+    {{ include('budget/_form.html.twig') }}
+
+
+    <a href="{{ path('app_budget_index') }}" class="btn btn-outline-secondary">
+        <span class="fa fa-chevron-left"></span> Retour à la liste
+    </a>
+{% endblock %}

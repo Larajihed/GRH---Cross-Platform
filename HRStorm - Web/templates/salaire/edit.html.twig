@@ -1,0 +1,13 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Modifier Salaire{% endblock %}
+
+{% block content %}
+    <h1>Modifier Salaire</h1>
+
+    {{ include('salaire/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="btn btn-black" href="{{ path('app_salaire_index') }}"><span class="fa fa-chevron-left"></span>Retour au liste</a>
+
+    {{ include('salaire/_delete_form.html.twig') }}
+{% endblock %}

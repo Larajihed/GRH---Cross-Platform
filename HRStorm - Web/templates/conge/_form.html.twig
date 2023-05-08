@@ -1,0 +1,53 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}, 'class': 'form-horizontal'}) }}
+
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.categorie, 'categorie', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.categorie) }}
+
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.description, 'description', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.description) }}
+
+    </div>
+
+
+        <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        {{ form_label(form.debut, "Date de Debut" ) }}
+                                        {{ form_widget(form.debut, {'attr': {'class': 'form-control form-control-user ','placeholder': 'DD/MM/YYYY'}}) }}
+                                        {{ form_errors(form.debut,{'attr': {'class':'text-danger'}}) }}
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{ form_label(form.fin, "Date de Fin" ) }}
+                                        {{ form_widget(form.fin, {'attr': {'class': 'form-control form-control-user ','placeholder': 'DD/MM/YYYY'}}) }}
+                        
+                                    {{ form_errors(form.fin,{'attr': {'class':'text-danger'}}) }}
+                                    {% if app.session.flashBag.has('warning') %}
+    <div class="alert alert-warning">
+        {{ app.session.flashBag.get('warning')[0] }}
+    </div>
+{% endif %}
+
+
+                                    </div>
+                                </div>
+    {# ... #}
+   <div class="form-group">
+        {{ form_label(form.image, 'image', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.image) }}
+
+    </div>
+        <div class="form-group row">
+    <button type="submit" class="btn btn-primary" style="
+    margin-left: 19px;
+    width: 196px;
+    ">Demander</button>
+</div>
+{{ form_end(form) }}

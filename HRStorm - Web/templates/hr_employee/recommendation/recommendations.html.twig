@@ -1,0 +1,33 @@
+{% block recommendations %}
+    <h3>Recommendations</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Description</th>
+                <th>Competences Required</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if recommendedCourses|length > 0 %}
+                {% for course in recommendedCourses %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.description }}</td>
+                        <td>
+                            <ul>
+                                {% for competence in course.competences %}
+                                    <li>{{ competence.nom }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="3">No courses recommended.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+{% endblock %}

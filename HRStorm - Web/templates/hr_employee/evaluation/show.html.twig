@@ -1,0 +1,37 @@
+{% extends "/employee/index.html.twig" %}
+
+{% block title %}Evaluation {% endblock %}
+
+{% block content %}
+    <a href="{{ path('app_evaluation_index') }}"> <- back to list</a>
+     <h1>Détails</h1>
+    <a class"btn btn-primary" href="{{ path('app_evaluation_edit', {'id': evaluation.id}) }}">edit</a>
+      {{ include('/hr_employee/evaluation/_delete_form.html.twig') }}
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Date D'Evaluation</th>
+                <td>{{ evaluation.Date ? evaluation.Date|date('Y-m-d') : '' }}</td>
+            </tr>
+           
+            <tr>
+                <th>Experience</th>
+                <td>{{ evaluation.Experience }}</td>
+            </tr>
+            <tr>
+                <th>Level</th>
+                <td>{{ evaluation.Level }}</td>
+            </tr>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ evaluation.Commentaire }}</td>
+        </tbody>
+    </table>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block content %}
+    <h1>Create new quiz</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.title) }}
+        {{ form_row(form.description) }}
+        {{ form_errors(form.questions) }}
+        {{ form_row(form.questions) }}
+        <div><label class="required">__name__label__</label><div id="quiz_questions___name__"><div><label for="quiz_questions___name___title" class="required">Title</label><input type="text" id="quiz_questions___name___title" name="quiz[questions][__name__][title]" required="required" placeholder="Enter question title" /></div><div><label for="quiz_questions___name___description" class="required">Description</label><input type="text" id="quiz_questions___name___description" name="quiz[questions][__name__][description]" required="required" placeholder="Enter question description" /></div><div><label for="quiz_questions___name___correctAnswer" class="required">Correct answer</label><input type="text" id="quiz_questions___name___correctAnswer" name="quiz[questions][__name__][correctAnswer]" required="required" placeholder="Enter correct answer" /></div><div><label for="quiz_questions___name___wrongAnswers" class="required">Wrong answers</label><input type="text" id="quiz_questions___name___wrongAnswers" name="quiz[questions][__name__][wrongAnswers]" required="required" placeholder="Enter wrong answers, separated by comma" /></div></div></div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    {{ form_end(form) }}
+{% endblock %}

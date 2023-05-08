@@ -1,0 +1,96 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %} Gestion de congé{% endblock %}
+
+{% block content %}
+
+<h1>Gestion de congé </h1>
+<div style="
+    margin-bottom: 7px;
+    float: right;
+    margin-right: 23px;">         
+    <a href="{{ path('search_conge_page') }}">
+     <button class="btn btn-outline-primary">   <i class="fa fa-history" aria-hidden="true"></i>
+ Afficher Historique
+    </button>
+    
+ </a> </div>
+
+ <table class="table">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                <th>Description</th>
+                <th>début</th>
+                <th>fin</th>
+                <th> certificat </th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conge in conges %}
+  
+
+
+
+            <tr>
+                <td>{{ conge.categorie }}</td>
+                <td>{{ conge.description }}</td>
+                <td>{{ conge.debut ? conge.debut|date('Y-m-d') : '' }}</td>
+                <td>{{ conge.fin ? conge.fin|date('Y-m-d') : '' }}</td>
+               
+              
+                {%if (conge.image== null) %}
+                <td> Pas de Certificat </td>
+                {% else %}
+                <td>
+               <a target="_blank"  href="/uploads/conges/{{conge.image}}" class="modal-trigger">
+
+               <img src="{{ asset('uploads/conges/' ~ conge.image) }}" alt="Image" style="width:200px;"> 
+
+               </a>
+                </td>
+                {%endif %}
+
+                
+
+                <td>
+                <a href="{{ path('app_conge_rh_show', {'id': conge.id}) }}">
+                    <button type="button" class="btn btn-primary">
+                                    <i class="fas fa-eye"></i>
+
+                      Voir
+                    </button>  
+                    </a> 
+     <a href="{{ path('app_conge_accepter', {'id': conge.id}) }}">
+                   <button type="button" class="btn btn-success">
+                    <i class="fa fa-check"></i>
+                      Accepter
+                    </button> 
+     </a>   
+                <a href="{{ path('app_conge_refuser', {'id': conge.id}) }}">
+                   <button type="button" class="btn btn-danger">
+                <i class="fa fa-ban"></i>
+                     Refuser
+                    </button>
+                    
+
+                  
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+      
+
+        </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center">
+    {{ knp_pagination_render(conges) }}
+</div>
+
+{% endblock %}

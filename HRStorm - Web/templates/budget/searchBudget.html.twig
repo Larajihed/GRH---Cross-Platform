@@ -1,0 +1,108 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Liste du budget{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="">Liste du budget</h1>
+                <div class="text-right">
+                    <a href="{{ path('app_budget_new') }}" class="btn btn-primary">Ajouter budget</a>
+                </div>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_salaire_index') }}">Table des salaires</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_depense_index') }}">Table des dépenses</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<div id="main">
+    <!-- Post -->
+    <section class="post">
+        <header class="major">
+            <span class="date">La Liste Des Voyages</span>
+        </header>
+        <div id="wrap">
+            <ul class="navbar">
+                <li>
+                    <a href="{{ path('budget_index')}}">Actualiser</a>
+                </li>
+                <li>
+                    <a href="#">Trie</a>
+                    <ul>
+                        <li><a href="{{ path('order_By_Date')}}">Trie par Date</a></li>
+                        <li><a href="{{ path('order_By_budget')}}">Trie par Budget</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Recherche</a>
+                    <ul>
+                        <li><a href="{{ path('listBudgetWithSearchbudget')}}">Recherche par budget</a></li>
+                        <li><a href="{{ path('listBudgetWithSearchdate')}}">Recherche par date</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="{{ path('DateNow')}}">à partir d'aujourd'hui</a>
+                </li>
+                <li>
+                    <a class="btn btn-success" href="{{path('PDF_Voyage') }}">  PDF </a>
+                    <script type="text/javascript">
+                        function imprimer_page(){
+                            window.print();
+                        }
+                    </script>
+                </li>
+
+
+            </ul>
+        </div>
+        <div class="section-content">
+
+            {{ form(searchBudget, {'attr': {'class':'form-horizontal','novalidate':'novalidate'}} ) }}
+
+            <form>
+                <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page" />
+            </form>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <!--  <th>Id</th>-->
+            <th>Budget</th>
+            <th>Date</th>
+            <th>Prime</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for budget in budgets %}
+            <tr>
+                <!-- <td>{{ budget.id }}</td>-->
+                <td>{{ budget.budget }}</td>
+                <td>{{ budget.date ? budget.date|date('Y-m') : '' }}</td>
+                <td>{{ budget.prime }}</td>
+                <td>
+                    <!--<a href="{{ path('app_budget_show', {'id': budget.id}) }}">Affichage</a>-->
+
+                    <a href="{{ path('app_budget_edit', {'id': budget.id}) }}">Modifier</a>
+
+                    <a href="{{ path('app_budget_delete', {'id': budget.id}) }}">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

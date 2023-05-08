@@ -1,0 +1,58 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Poste{% endblock %}
+
+{% block content %}
+   <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="">Fiches des postes</h1>
+            <div class="text-right">
+                <a href="{{ path('app_poste_new') }}" class="btn btn-primary">Create new</a>
+            </div>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_competence_index') }}">Compétences</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_evaluation_index') }}">Evaluations</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Missions</th>
+                <th>Description</th>
+                <th>Salaire</th>
+                
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for poste in postes %}
+            <tr>
+            
+                <td>{{ poste.Nom }}</td>
+                <td>{{ poste.Missions }}</td>
+                <td>{{ poste.Description }}</td>
+                <td>{{ poste.SALAIREMIN }} - {{ poste.SALAIREMAX }} TND</td>
+                
+                <td>
+                    <a href="{{ path('app_poste_show', {'id': poste.id}) }}">show</a>
+                    <a href="{{ path('app_poste_edit', {'id': poste.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

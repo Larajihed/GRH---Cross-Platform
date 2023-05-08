@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  autolayout="true" title="Home" scrollableY="true" name="Home">
+  <component type="Container" layout="LayeredLayout" layeredLayoutPreferredWidthMM="0.0" layeredLayoutPreferredHeightMM="0.0"  name="Container">
+    <layoutConstraint insets="17.032257% 29.388165% 33.032257% 20.661985%" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    <component type="Button" text="" icon="fontImage:e865" name="Button" commandName="" commandId="0" commandVarName="" >
+      <layoutConstraint insets="5.5875387mm auto auto 40.16064%" referenceComponents="-1 -1 -1 -1" referencePositions="0.0 0.0 0.0 0.0" />
+    </component>
+  </component>
+</component>

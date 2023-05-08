@@ -1,0 +1,85 @@
+
+    <div class="row">
+    {% for task in planning %}
+
+
+        <div class="col-xl-4 col-md-6 mb-4 ml-5">
+
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                {% if (task.priorite=="high")  %}
+                                    <div class="badge badge-danger float-right"style="font-size: small">{{ task.priorite }}</div>
+
+                                {% elseif (task.priorite=="medium") %}
+                                    <div class="badge badge-warning float-right " style="font-size: small">{{ task.priorite }}</div>
+                                {% else %}
+                                    <div class="badge badge-success float-right " style="font-size: small">{{ task.priorite }}</div>
+                                {% endif %}
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    {{ task.nom }}
+                                </div>
+                                <div class=" mb-0 font-weight-bold text-gray-800">{{ task.description }}</div>
+
+                                <div class="d-flex justify-content-between">
+                                    <form method="post" action="{{ path('app_tache_delete', {'id': task.id}) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                        <button class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></button>
+                                        <a class="btn btn-success btn-circle btn-sm " href="{{ path('app_tache_edit', {'id': task.id}) }}"><i class="fas fa-edit"></i></a>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas alert-danger fa-1x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+
+    {% endfor %}
+    </div>
+
+
+
+
+
+{#{% block js %}#}
+
+{#    <script src="{{ asset('assets/js/jquery.js') }}"></script>#}
+{#    <script#}
+{#            src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')}}">#}
+{#    </script>#}
+{#    <script>#}
+{#        $( document ).ready(function() {#}
+{#            var currentRequest = null;#}
+{#            $("#search").keyup(function(e){#}
+{#                /* La variable value va prendre la valeur insérer dans le champ de texte#}
+{#                afin d’effectuer la recherche */#}
+{#                var value = $(this).val();#}
+{#                if(currentRequest != null) {#}
+{#                    currentRequest.abort();#}
+{#                }#}
+{#                /* Ajax est lancé lors du remplissage du champ texte dont l’id est#}
+{#                « search » pour faire la recherche */#}
+{#                currentRequest = $.ajax({#}
+{#                    url : "{{ path('app_searchtache') }}",#}
+{#                    type : 'GET',#}
+{#                    data: {#}
+{#                        'searchValue' : value#}
+{#                    },#}
+{#                    success : function(retour)#}
+{#                    {#}
+{#                        $('#all').html(retour);#}
+{#                    },#}
+{#                });#}
+{#                return false;#}
+{#            });#}
+{#        });#}
+{#    </script>#}
+{#{% endblock %}#}

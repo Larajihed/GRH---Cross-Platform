@@ -1,0 +1,54 @@
+{% extends "/employee/index.html.twig" %}
+
+
+{% block title %}Candidat{% endblock %}
+
+{% block content %}
+    <h1>Candidat</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ candidat.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ candidat.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ candidat.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Date de naissance</th>
+                <td>{{ candidat.datenaissance ? candidat.datenaissance|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Num Tel</th>
+                <td>{{ candidat.tel }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ candidat.email }}</td>
+            </tr>
+            <tr>
+                <th>Lettre de motivation</th>
+                <td>{{ candidat.lettremotivation }}</td>
+            </tr>
+            <tr>
+                <th>Cv</th>
+                <td><a target="_blank"  href="/uploads/candidat/{{candidat.cv}}" class="modal-trigger">Consulter CV</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_candidat_index') }}">Retour a la liste</a>
+
+    <a class="btn btn-secondary" type="button" class="btn btn-sm btn-primary-soft mb-0" href="{{ path('download_pdf', {'candidat_id':  candidat.id }) }}">Télécharger PDF</a>
+
+
+
+
+    {{ include('candidat/_delete_form.html.twig') }}
+{% endblock %}

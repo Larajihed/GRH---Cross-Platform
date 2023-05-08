@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" prefHeight="615.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.Budget.AfficherBudgetController">
+   <children>
+      <TableView fx:id="tableview" layoutX="332.0" layoutY="115.0" onMouseClicked="#pressTABLE" prefHeight="297.0" prefWidth="673.0">
+        <columns>
+          <TableColumn fx:id="budgetCol" prefWidth="100.0" text="budget" />
+            <TableColumn fx:id="primeCol" prefWidth="75.0" text="prime" />
+            <TableColumn fx:id="dateCol" prefWidth="120.0" text="date" />
+            <TableColumn fx:id="budgetColmateriel" prefWidth="136.0" text="budget materiel" />
+            <TableColumn fx:id="budgetSalaireCol" prefWidth="117.0" text="budget salaire" />
+            <TableColumn fx:id="budgetSerciceCol" prefWidth="119.0" text="budget service" />
+        </columns>
+      </TableView>
+      <TextField fx:id="budget" layoutX="126.0" layoutY="162.0" />
+      <TextField fx:id="prime" layoutX="126.0" layoutY="219.0" />
+      <TextField fx:id="budgetService" layoutX="126.0" layoutY="333.0" />
+      <TextField fx:id="budgetMateriel" layoutX="126.0" layoutY="392.0" />
+      <TextField fx:id="budgetSalaire" layoutX="126.0" layoutY="441.0" />
+      <Label layoutX="25.0" layoutY="162.0" text="budget" />
+      <Label layoutX="25.0" layoutY="219.0" text="prime" />
+      <Label layoutX="25.0" layoutY="282.0" text="date" />
+      <Label layoutX="15.0" layoutY="338.0" text="budget service" />
+      <Label layoutX="11.0" layoutY="397.0" text="budget materiel" />
+      <Label layoutX="8.0" layoutY="446.0" text="budget salaire" />
+      <Button fx:id="modifier" layoutX="173.0" layoutY="516.0" mnemonicParsing="false" onAction="#modifierBudget" prefHeight="31.0" prefWidth="112.0" text="Modifier" textFill="#3ef016" />
+      <Button fx:id="delete" layoutX="824.0" layoutY="516.0" mnemonicParsing="false" onAction="#deleteBudget" prefHeight="31.0" prefWidth="144.0" style="-fx-background-color: red;" text="Supprimer" />
+      <Text fill="#1c54d7" layoutX="416.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Afficher Budget" wrappingWidth="272.99999582767487">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <DatePicker fx:id="date" layoutX="123.0" layoutY="277.0" prefHeight="31.0" prefWidth="187.0" />
+      <Button fx:id="back" layoutX="233.0" layoutY="26.0" mnemonicParsing="false" onAction="#backAjout" prefHeight="40.0" prefWidth="98.0" text="Ajouter Budget" textFill="#d71313" />
+      <TextField fx:id="recherche" layoutX="795.0" layoutY="71.0" onAction="#Recherche" promptText="recherche" />
+      <Button fx:id="Stat" layoutX="856.0" layoutY="431.0" mnemonicParsing="false" onAction="#Stat" prefHeight="31.0" prefWidth="112.0" text="stat" textFill="#d79507" />
+      <ComboBox fx:id="ExporterListe" layoutX="498.0" layoutY="431.0" onAction="#ExporterListe" prefHeight="31.0" prefWidth="144.0" promptText="Exporter" />
+      <Button fx:id="depense" layoutX="102.0" layoutY="26.0" mnemonicParsing="false" onAction="#depense" prefHeight="39.0" prefWidth="106.0" text="Gs Dépense" textFill="#1c54d7" />
+      <ComboBox fx:id="Tri" layoutX="689.0" layoutY="431.0" onAction="#Tri" prefHeight="31.0" prefWidth="135.0" promptText="Tri" />
+      <ImageView fx:id="backButton" fitHeight="52.0" fitWidth="38.0" layoutX="22.0" layoutY="22.0" onMouseClicked="#redirectToDash" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../leteli.png" />
+         </image>
+         <effect>
+            <Blend />
+         </effect>
+      </ImageView>
+   </children>
+</AnchorPane>

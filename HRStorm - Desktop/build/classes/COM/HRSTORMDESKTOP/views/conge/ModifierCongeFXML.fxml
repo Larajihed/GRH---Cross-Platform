@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="COM.HRSTORMDESKTOP.controllers.conge.ModifierConge">
+   <Label layoutX="61.0" layoutY="63.0" style="-fx-font-weight: bold;" text="Modifier Congé">
+      <font>
+         <Font size="24.0" />
+      </font>
+   </Label>
+   <AnchorPane layoutX="123.0" layoutY="111.0" prefHeight="332.0" prefWidth="350.0">
+      <children>
+         <TextField id="categorie" fx:id="categorie" layoutX="11.0" layoutY="31.0" prefHeight="46.0" prefWidth="334.0" promptText="Categorie" />
+         <TextField id="desc" fx:id="desc" layoutX="11.0" layoutY="103.0" prefHeight="66.0" prefWidth="334.0" promptText="Description" />
+         <Label layoutX="11.0" layoutY="10.0" text="Categorie">
+            <font>
+               <Font size="14.0" />
+            </font>
+         </Label>
+         <Label layoutX="11.0" layoutY="81.0" text="Description">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+         <Label id="errorTxt" layoutX="14.0" layoutY="272.0" textFill="RED" />
+         <DatePicker id="dp_debut" layoutX="16.0" layoutY="190.0" prefHeight="25.0" prefWidth="334.0" />
+         <DatePicker id="dp_fin" layoutX="16.0" layoutY="247.0" prefHeight="25.0" prefWidth="334.0" />
+         <Label layoutX="14.0" layoutY="169.0" text="Date Début">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+         <Label layoutX="17.0" layoutY="229.0" text="Date Fin">
+            <font>
+               <Font size="14.0" />
+            </font></Label>
+      </children>
+   </AnchorPane>
+   <Button layoutX="473.0" layoutY="30.0" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #4CD5E5;" text="Retour" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <Button layoutX="452.0" layoutY="412.0" onAction="#handleInsert" prefHeight="40.0" prefWidth="107.0" style="-fx-background-color: #3166f7;" text="Modifier" textFill="WHITE">
+      <font>
+         <Font size="16.0" />
+      </font>
+   </Button>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

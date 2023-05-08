@@ -1,0 +1,218 @@
+{% extends '/employee/index.html.twig' %}
+
+
+{% block stylesheets %}
+
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"
+          xmlns="http://www.w3.org/1999/html">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i') }}"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
+{#    <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">#}
+
+{#    <script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>#}
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    <div class="d-flex justify-content-between">
+        <a class="form-control btn btn-info btn-lg mr-4 ml-4 mb-4" href="{{ path('app_planning_new') }}">Creer un planning</a>
+        <a class="form-control btn btn-info btn-lg mr-4 ml-4 mb-4" href="{{ path('app_tache_show') }}">Voir les taches</a>
+    </div>
+
+    <div class=" dropdown mb-4 ml-4">
+        <button class="btn btn-primary dropdown-toggle" type="button"
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            Trier les plannings
+        </button>
+        <div class="dropdown-menu animated--fade-in"
+             aria-labelledby="dropdownMenuButton">
+            <a class="form-control btn btn-info btn-sm dropdown-item" href="{{ path('app_planning_datedebutC') }}">Date Debut Croissant</a>
+            <a class="form-control btn btn-info btn-sm  dropdown-item" href="{{ path('app_planning_datedebutD') }}">Date Debut DéCroissant</a>
+            <a class="form-control btn btn-info btn-sm  dropdown-item" href="{{ path('app_planning_datefinC') }}">Date Fin Croissant</a>
+            <a class="form-control btn btn-info btn-sm  dropdown-item" href="{{ path('app_planning_datefinD') }}">Date Fin DéCroissant</a>
+
+        </div>
+
+
+    </div>
+
+{#    <div class="d-flex justify-content-between">#}
+{#        <a class="form-control btn btn-info btn-lg mr-4 ml-4 mb-4" href="{{ path('app_planning_priorite') }}">Priorite</a>#}
+{#    </div>#}
+
+
+
+
+
+
+    <div class="container-fluid">
+
+
+        <div class="row">
+            {% for planning in plannings %}
+            <div class="col-lg-6">
+
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Accordion -->
+                    <a href="#card" class="d-block card-header py-3" data-toggle="collapse"
+                       role="button" aria-expanded="true" aria-controls="card{{ planning.id }}">
+                        <h6 class=" m-0 font-weight-bold text-primary">Planning: {{ planning.nom }} </h6>
+                        <div class=" m-0 font-weight-bold text-danger">{{ planning.taches.count() }} taches !! </div>
+
+                        <span class="-calendar-times"><i class="fas fa-calendar fa-1x text-gray-300"></i>  <span  class=" m-0 font-weight-bold text-secondary">A commencer de: </span>{{ planning.dateDebut | date("m/d/y") }}</span>
+                        <span class="-calendar-times"><i class="fas fa-calendar fa-1x text-gray-300"></i>  <span  class=" m-0 font-weight-bold text-secondary">A finir avant:  </span>{{ planning.dateFin | date("m/d/y") }}</span>
+
+                    </a>
+                    <!-- Card Content - Collapse -->
+                    <div class="collapse show" id="card">
+                        <div class="card-body ">
+                            <div class="card-title">
+                                <span> Description :  </span>
+                                <div> {{ planning.description }}</div>
+                                <a class="form-control btn btn-success btn-sm mb-4" style="width: 150px; margin-left: 420px;" href="{{ path('app_tache_new') }}">Creer une tache</a>
+
+                                <div class=" d-flex align-items-center "style="margin-left: 500px;">
+                                    <form method="post" action="{{ path('app_planning_delete', {'id': planning.id}) }}">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ planning.id) }}">
+                                        <button class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></button>
+                                        <a class="btn btn-success btn-circle btn-sm " href="{{ path('app_planning_edit', {'id': planning.id}) }}"><i class="fas fa-edit"></i></a>
+
+                                    </form>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+                        <a class="form-control btn btn-outline-info btn-sm "  href="javascript:void(0);" onclick="toggleTaskContainer({{ planning.id }});" >Voir les taches</a>
+                    </div>
+                </div>
+
+                <div id="{{ planning.id }}" style="display: none;">
+                    <div class="row">
+                    {% for task in planning.taches %}
+
+                        <div class="col-xl-5 col-md-6 mb-4">
+                        {% if(task.planning.id == planning.id) %}
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            {% if (task.priorite=="high")  %}
+                                                <div class="badge badge-danger float-right"style="font-size: small">{{ task.priorite }}</div>
+
+                                            {% elseif (task.priorite=="medium") %}
+                                                <div class="badge badge-warning float-right " style="font-size: small">{{ task.priorite }}</div>
+                                            {% else %}
+                                                <div class="badge badge-success float-right " style="font-size: small">{{ task.priorite }}</div>
+                                            {% endif %}
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                {{ task.nom }}
+                                            </div>
+                                            <div class=" mb-0 font-weight-bold text-gray-800">{{ task.description }}</div>
+
+                                            <div class="d-flex justify-content-between">
+                                            <form method="post" action="{{ path('app_tache_delete', {'id': task.id}) }}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                                                <button class="btn btn-danger btn-circle btn-sm "><i class="fas fa-trash"></i></button>
+                                                <a class="btn btn-success btn-circle btn-sm " href="{{ path('app_tache_edit', {'id': task.id}) }}"><i class="fas fa-edit"></i></a>
+
+                                            </form>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas alert-danger fa-1x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    <style>
+        #calendrier{
+            width: 100%;
+            display: inline-block;
+            margin: auto;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js" integrity="sha256-YicH/8aE660iEnJtgll3vT54dJApy3XkYmqNfGVFEzA=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" integrity="sha256-5veQuRbWaECuYxwap/IOE/DAwNxgm4ikX7nrgsqYp88=" crossorigin="anonymous">
+    <div class="nk-widget nk-widget-highlighted">
+        <h4 class="nk-widget-title"><span><span class="text-main-1">Calendrier</span> des Plannings</span></h4>
+        <div class="nk-widget-content">
+            <div id="calendrier"></div>
+        </div>
+    </div>
+    <script>
+        window.onload = () =>{
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt,{
+                initialView: 'dayGridMonth',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: {{ data | raw }}
+            })
+            calendar.render();
+        }
+    </script>
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+    function toggleTaskContainer(id) {
+        var container = document.getElementById(id);
+        var button = document.querySelector('[data-container="' + id + '"]');
+
+        if (container.style.display === 'none') {
+            container.style.display = 'block';
+            button.innerHTML = 'Masquer les taches';
+        } else {
+            container.style.display = 'none';
+            button.innerHTML = 'Voir les taches';
+        }
+    }
+</script>
+
+{% endblock %}

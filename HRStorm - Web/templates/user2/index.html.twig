@@ -1,0 +1,45 @@
+{% extends '/employee/index.html.twig' %}
+
+{% block title %}Liste des Employées{% endblock %}
+
+{% block content %}
+    <h1>Employées</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Vérifié</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Nomsociete</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.nomsociete }}</td>
+                <td>
+                    <a href="{{ path('app_user2_show', {'id': user.id}) }}">show</a>
+                    <a href="{{ path('app_user2_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user2_new') }}">Nouveau employee</a>
+{% endblock %}

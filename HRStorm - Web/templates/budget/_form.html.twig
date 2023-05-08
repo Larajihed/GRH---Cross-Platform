@@ -1,0 +1,52 @@
+
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}, 'class': 'form-horizontal'}) }}
+
+    {{ form_errors(form) }}
+
+<div class="form-group">
+    {{ form_label(form.budget, 'Budget', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.budget, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.budget) }}
+
+</div>
+
+<div class="form-group row">
+    <div class="col-sm-6 mb-3 mb-sm-0">
+        {{ form_label(form.date, "Date" ) }}
+        {{ form_widget(form.date, {'attr': {'class': 'form-control form-control-user ','placeholder': 'MM/YYYY'}}) }}
+        {{ form_errors(form.date) }}
+    </div>
+</div>
+
+<div class="form-group">
+    {{ form_label(form.prime, 'Prime', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.prime, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.prime) }}
+
+</div>
+
+<div class="form-group">
+    {{ form_label(form.budget_materiel, 'Budget materiel', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.budget_materiel, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.budget_materiel) }}
+
+</div>
+<div class="form-group">
+    {{ form_label(form.budget_salaire, 'Budget salaire', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.budget_salaire, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.budget_salaire) }}
+
+</div>
+<div class="form-group">
+    {{ form_label(form.budget_service, 'Budget service', {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_widget(form.budget_service, {'attr': {'class': 'form-control'}}) }}
+    {{ form_errors(form.budget_service) }}
+
+</div>
+
+
+
+
+
+<button type="submit" class="btn btn-primary">Enregistrer</button>
+{{ form_end(form) }}

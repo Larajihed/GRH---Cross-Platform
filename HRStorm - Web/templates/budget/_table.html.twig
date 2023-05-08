@@ -1,0 +1,35 @@
+{% if budgets|length == 0 %}
+    <p>Aucun Resultat !</p>
+{% else %}
+    {% if searchTerm is empty %}
+        <p>Afficher tous les budgets:</p>
+
+    {% endif %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Budget</th>
+            <th>Date</th>
+            <th>Prime</th>
+            <th>budget_materiel</th>
+            <th>budget_salaire</th>
+            <th>budget_service</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for budget in budgets %}
+            <tr>
+                <!-- <td>{{ budget.id }}</td>-->
+                <td>{{ budget.budget }}</td>
+                <td>{{ budget.date ? budget.date|date('M-Y') : '' }}</td>
+                <td>{{ budget.prime }}</td>
+                <td>{{ budget.budget_materiel }}</td>
+                <td>{{ budget.budget_salaire }}</td>
+                <td>{{ budget.budget_service }}</td>
+                <!--<td>{ evaluation.Competences|join(', ') }</td>-->
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endif %}
